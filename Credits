@@ -1,0 +1,49 @@
+Some of the code is inspired by the ideas presented below:
+
+------
+
+- Enhanced ambient occlusion is based on Capt Tatsu's ambient occlusion used in
+  BSL Shaders:
+  https://bitslablab.com/bslshaders/
+
+- Shadow bias technique from Emin implementation, based on a concept
+  reimagined by gri573:
+  https://www.complementary.dev/
+
+- Interleaved noise from:
+  "NEXT GENERATION POST PROCESSING IN CALL OF DUTY: ADVANCED WARFARE"
+  http://advances.realtimerendering.com/s2014/index.html
+
+- TAA is based on Erkaman's TAA simple implementation:
+  https://gist.github.com/Erkaman
+
+- Phi noise by delu:
+  https://www.shadertoy.com/view/Nst3R7
+  Based on TinyTexel:
+  https://www.shadertoy.com/view/wltSDn
+  Based on:
+  http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
+
+- R dither based on:
+  http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
+
+- Dither 13 and Dther 17 by atyuwen:
+  https://www.shadertoy.com/view/wl3cWX
+  Based on:
+  https://developer.oculus.com/blog/tech-note-shader-snippets-for-efficient-2d-dithering/
+
+------
+
+If any functions were listed here, and are no longer listed,
+they have been removed or replaced by own functions.
+
+------
+
+I am not a graphics developer, I made this shader out of curiosity and
+my personal use, but I think it is good enough to be shared.
+
+I have not copied, but have tried to learn, adapt and modify
+other people's ideas in favor of the shader.
+
+If you think I have violated your copyright, please notify me.
+javierg.cim at gmail.com
