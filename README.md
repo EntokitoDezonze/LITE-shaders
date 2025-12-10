@@ -1,50 +1,83 @@
-# MakeUp Edit - LITE shaders LT473 - Code
-Ultra high performance Minecraft shader (Java).
+This is a [MakeUp - Ultra Fast](https://modrinth.com/shader/makeup-ultra-fast-shaders) shaders modification that aims to make this amazing shader even faster! This shader maintains good looks while having great performance. Adding so many customization and a Portuguese translation. It can be used both by people with potato PCs that want to enhance Minecraft Java visuals and by people with good PCs who want high frame rates with good graphics and sharp shadows.
 
-## Version: 4.7.3
-## Version code: LT473
+# TESTED ON:
 
-### This version works in Optifine and Iris 1.5.1 or higher.
+- Minecraft 1.12 - 1.21.x
+- NVIDIA, AMD and Intel, NO warranty that it works on all hardware.
+- Windows 10 and 11.
 
-Features:
+# Features:
 
-Shadows
-Colored shadows
-Bloom
-Motion blur
-Custom colors
-Auto exposure
-Sharp TAA (Temporal antialiasing)
-Fast Raymarch
-Waving plants
-Distant horizons (Iris only)
-Bobby support
-Refraction
-Depth of Field
-Film filters (Vignette and grain.)
-Saturation, Contrast and brightness adjustments
-PS1 pixel filter
-Fast Fake bloom
+Majority of these features can be turned off or reduced to enhance performance.
 
-Tested on:
-Minecraft 1.12 - 1.21.8
+- Shadow casting
+- Style button for fast switching of Realistic looks and Vanilla.
+- Colored shadows
+- Godrays
+- Adaptative contrast TAA (Temporal anti-aliasing)
+- Material based reflection (Gloss)
+- Realistic and Vanilla clouds
+- Ambient occlusion
+- Bloom and Motion blur
+- Realistic and Vanilla water
+- +10 customized color schemes
+- Optional auto-exposure
+- Fast Raymarch and Flipped image reflections
+- Distant horizons support (Iris only)
+- Water refraction
+- Depth of Field
+- And more...
 
-AMD Ryzen 5500 and 5500U
-Intel Core I5-3230M
+[Gallery](https://modrinth.com/shader/lite-shaders/gallery)
 
-Nvidia GeForce RTX 2060
-Intel HD Graphics 4000
-AMD Radeon VEGA 7
+<details>
+<summary>How to config?</summary>
 
-Windows 10 and 11.
-Optifine and Iris.
+## PROFILES:
+- No effects: Pure shader
+- Shadowless: Low, Medium and MAX: Profiles with shadows turned off.
+- Very low - MAX: Progressively increase the quality and amount of effects at the cost of performance.
+- Choose the best for you!
+## COLOR SCHEME:
+- Change the color of sky and lighting. Realistic+ is the default and most recommended.
+## STYLE:
+- By clicking on the style button, you switch between Enhanced and Vanilla, Enhanced aims to be realistic, and Vanilla preserves the Minecraft
+aesthetic.
+## SCREENS:
+- Basic: Basic features of shader.
+- Lighting: Shadow quality, distance, light intensity, etc.
+- Effects: Majority of options of shader, separed into sub-screens, such as Rendering, Camera, etc.
+- Info: Information about the shader.
 
-## You can:
-* You can use the shader without restrictions.
-* You can fork the shader from: [https://github.com/javiergcim/MakeUpUltraFast](https://github.com/javiergcim/MakeUpUltraFast)
-* You can modify this shader for any purpose.
-* If you modify or use the shader please add a credit, and the official URLs if possible: [https://modrinth.com/shader/makeup-ultra-fast-shaders](https://modrinth.com/shader/makeup-ultra-fast-shaders), [https://www.planetminecraft.com/mod/makeup-ultra-fast-shader/](https://www.planetminecraft.com/mod/makeup-ultra-fast-shader/), [https://www.curseforge.com/minecraft/customization/makeup-ultra-fast-shader](https://www.curseforge.com/minecraft/customization/makeup-ultra-fast-shader) and/or [https://github.com/javiergcim/MakeUpUltraFast](https://github.com/javiergcim/MakeUpUltraFast)
+</details>
 
-- Credits for forks of LITE shaders: Add the credits of MakeUp and these links: (https://modrinth.com/shader/lite-shaders) (https://www.curseforge.com/minecraft/shaders/lite-shaders) plus creator credit: Modified and translated by @Entokito-Dezonze
+# How to install?
+- First, you need Iris shaders or OptiFine: https://irisshaders.dev/ https://optifine.net/downloads
+- Put LITE shaders.zip folder at .minecraft/shaderpacks
+- Launch Minecraft with Iris or OptiFine installed.
+- Open: "Options -> Video Settings -> Shaders"
+- Choose LITE shaders.
 
-Notification is not required, but would be appreciated.
+# Recommendations:
+- Minecraft Java 1.12, 1.11 works but with some bugs.
+- Intel HD 4000 or better.
+- "Medium" profile.
+- Smart leaves turned off, as it can broke lighting.
+
+# CREDITS:
+
+Original creator: Javier Garduño
+Links:
+
+https://www.planetminecraft.com/mod/makeup-ultra-fast-shader
+https://www.curseforge.com/minecraft/customization/makeup-ultra-fast-shader
+https://github.com/javiergcim/MakeUpUltraFast
+
+Modified and translated by Entokito Dezonze.
+
+## Credits for forks of LITE shaders:
+- Add the credits of MakeUp and these links: (https://modrinth.com/shader/lite-shaders) (https://www.curseforge.com/minecraft/shaders/lite-shaders) plus creator credit: Modified and translated by @Entokito-Dezonze
+
+Made in Brazil!
+# WARNING:
+_**This shader is only available on MODRINTH, CURSEFORGE, PLANET MINECRAFT and TLMODS. Downloading it from any other site may not be safe. I haven't officially uploaded it to any other site.**_
