@@ -1,0 +1,291 @@
+#Profiles
+############################
+profile.no_effects=Inga effekter
+profile.shadowless_low=Låg (skugglös)
+profile.shadowless_medium=Medium (skugglös)
+profile.shadowless_high=Hög (skugglös)
+profile.low=Låg
+profile.medium=Medium
+profile.high=Hög
+profile.extreme=Extrem
+
+profile.comment=De "skugglösa" profilerna är designade för datorer med låg prestanda, vilket inaktiverar skuggor. Traditionella profiler lägger långsamt till skuggor med högre kvalitet och mer avancerade tunga effekter. Var god experimentera med de tillgängliga alternativen och hitta den bästa kombinationen för dig.
+
+#About
+#############################
+option.ACERCADE=LITE shaders
+option.ACERCADE.comment=Tack för att du använder denna shader! :). Ändra Optifines inbyggda kvalitetsalternativ till normala värden eller dess standardvärden för bättre kvalitet.
+value.ACERCADE.0=§5§l§oLT473
+
+
+#Options
+#############################
+option.SHADOW_CASTING=Skuggor
+
+option.SHADOW_DISTANCE_SLIDER=Skuggavstånd
+value.SHADOW_DISTANCE_SLIDER.0=Kort
+value.SHADOW_DISTANCE_SLIDER.1=§l§bMedium
+value.SHADOW_DISTANCE_SLIDER.2=§a§lLång
+
+option.SHADOW_QTY_SLIDER=Skuggkvalitet
+value.SHADOW_QTY_SLIDER.0=Ingen
+value.SHADOW_QTY_SLIDER.1=§b§lLåg
+value.SHADOW_QTY_SLIDER.2=§a§lMedium
+value.SHADOW_QTY_SLIDER.3=§e§lHög
+
+option.REFLECTION_SLIDER=Reflektion
+value.REFLECTION_SLIDER.0=AV
+value.REFLECTION_SLIDER.1=Spegelbild
+value.REFLECTION_SLIDER.2=§a§lRaymarching
+
+option.SHADOW_TYPE=Skuggtyp
+value.SHADOW_TYPE.0=Enkel
+value.SHADOW_TYPE.1=Filtrerad
+
+option.SHADOW_BLUR=Intensitet för skuggoskärpa
+
+option.COLORED_SHADOW=Färglagda skuggor
+
+option.VOL_LIGHT=Ljusstrålar
+value.VOL_LIGHT.0=Inaktiverad
+value.VOL_LIGHT.1=Djupbaserad
+value.VOL_LIGHT.2=Volumetrisk
+
+option.DOF=Skärpedjup
+
+option.DOF_STRENGTH=Styrka för skärpedjup
+
+option.DOF_SAMPLES_FACTOR=Samplingsfaktor för skärpedjup
+
+option.AO=Omgivande inneslutning
+value.AO.0=AV
+value.AO.1=PÅ
+
+option.AOSTEPS=Samplingspar för omgivande inneslutning
+
+option.AO_STRENGTH=Styrka för omgivande inneslutning
+
+option.AA_TYPE=Tidsbestämd sampling
+value.AA_TYPE.0=AV
+value.AA_TYPE.1=Denoise
+value.AA_TYPE.2=TAA
+value.AA_TYPE.3=Sharp TAA
+
+option.MOTION_BLUR=Rörelseoskärpa
+option.MOTION_BLUR_STRENGTH=Styrka för rörelseoskärpa
+option.MOTION_BLUR_SAMPLES=Samplingar för rörelseoskärpa
+
+option.VANILLA_WATER=Originalaktigt vatten
+
+option.WATER_TEXTURE=Vattentextur
+value.WATER_TEXTURE.0=Nej
+value.WATER_TEXTURE.1=Ja
+
+option.WATER_COLOR_SOURCE=Vattenfärg
+value.WATER_COLOR_SOURCE.0=Shaderschema
+value.WATER_COLOR_SOURCE.1=Resurspaket
+
+option.REFLECTION=Reflektion
+value.REFLECTION.0=AV
+value.REFLECTION.1=PÅ
+
+option.REFRACTION=Refraktion
+value.REFRACTION.0=AV
+value.REFRACTION.1=PÅ
+
+option.SSR_TYPE=Reflektionstyp
+value.SSR_TYPE.0=Spegelbild
+value.SSR_TYPE.1=§a§lRaymarching§r
+
+option.SUN_REFLECTION=Solreflektion
+value.SUN_REFLECTION.0=AV
+value.SUN_REFLECTION.1=PÅ
+
+option.CLOUD_REFLECTION=Vol. molnreflektion
+
+option.WAVING=Gungande växter
+value.WAVING.0=Nej
+value.WAVING.1=Ja
+
+option.CHROMA_ABER=Färgavvikelse
+value.CHROMA_ABER.0=Nej
+value.CHROMA_ABER.1=Ja
+
+option.CHROMA_ABER_STRENGTH=Styrka för färgavvikelse
+
+option.WATER_ABSORPTION=Absorberingsindex för vatten
+
+option.WATER_TURBULENCE=Vågstyrka
+value.WATER_TURBULENCE.14.0=Mycket låg
+value.WATER_TURBULENCE.1.75=Låg
+value.WATER_TURBULENCE.0.9=Medium
+value.WATER_TURBULENCE.0.5=Hög
+
+option.COLOR_SCHEME=§lFärgschema
+value.COLOR_SCHEME.0=Ethereal
+value.COLOR_SCHEME.1=New shoka
+value.COLOR_SCHEME.2=Shoka
+value.COLOR_SCHEME.3=Legacy
+value.COLOR_SCHEME.4=Captain
+value.COLOR_SCHEME.5=Psychedelic
+value.COLOR_SCHEME.6=Cocoa
+value.COLOR_SCHEME.99=Beställnings
+
+option.LIGHT_SUNSET_COLOR_R=Solnedgångsljus R
+option.LIGHT_SUNSET_COLOR_G=Solnedgångsljus G
+option.LIGHT_SUNSET_COLOR_B=Solnedgångsljus B
+
+option.LIGHT_DAY_COLOR_R=Dagsljus R
+option.LIGHT_DAY_COLOR_G=Dagsljus G
+option.LIGHT_DAY_COLOR_B=Dagsljus B
+
+option.LIGHT_NIGHT_COLOR_R=Nattlampa R
+option.LIGHT_NIGHT_COLOR_G=Nattlampa G
+option.LIGHT_NIGHT_COLOR_B=Nattlampa B
+
+option.ZENITH_SUNSET_COLOR_R=Zenith solnedgång R
+option.ZENITH_SUNSET_COLOR_G=Zenith solnedgång G
+option.ZENITH_SUNSET_COLOR_B=Zenith solnedgång B
+
+option.ZENITH_DAY_COLOR_R=Zenith dag R
+option.ZENITH_DAY_COLOR_G=Zenith dag G
+option.ZENITH_DAY_COLOR_B=Zenith dag B
+
+option.ZENITH_NIGHT_COLOR_R=Zenith natt R
+option.ZENITH_NIGHT_COLOR_G=Zenith natt G
+option.ZENITH_NIGHT_COLOR_B=Zenith natt B
+
+option.HORIZON_SUNSET_COLOR_R=Horisont solnedgång R
+option.HORIZON_SUNSET_COLOR_G=Horisont solnedgång G
+option.HORIZON_SUNSET_COLOR_B=Horisont solnedgång B
+
+option.HORIZON_DAY_COLOR_R=Horisont dag R
+option.HORIZON_DAY_COLOR_G=Horisont dag G
+option.HORIZON_DAY_COLOR_B=Horisont dag B
+
+option.HORIZON_NIGHT_COLOR_R=Horisont natt R
+option.HORIZON_NIGHT_COLOR_G=Horisont natt G
+option.HORIZON_NIGHT_COLOR_B=Horisont natt B
+
+option.WATER_COLOR_R=Vatten R
+option.WATER_COLOR_G=Vatten G
+option.WATER_COLOR_B=Vatten B
+
+option.NV_COLOR_R=Night Vision R Multiplikator
+option.NV_COLOR_G=Night Vision G Multiplikator
+option.NV_COLOR_B=Night Vision B Multiplikator
+
+option.OMNI_TINT_CUSTOM=Omni nyans
+
+option.AVOID_DARK_LEVEL=Ljusstyrka i grottor
+
+option.NIGHT_BRIGHT=Ljusstyrka på natten
+
+option.V_CLOUDS=Moln
+value.V_CLOUDS.0=Original
+value.V_CLOUDS.1=Volumetrisk statisk
+value.V_CLOUDS.2=Volumetrisk dyn.
+
+option.CLOUD_VOL_STYLE=Volumetrisk molnstil
+value.CLOUD_VOL_STYLE.0=Naturlig
+value.CLOUD_VOL_STYLE.1=Fyrkantig
+
+option.CLOUD_SPEED=Molnhastighet
+value.CLOUD_SPEED.0=Normal
+value.CLOUD_SPEED.1=Time lapse 1
+value.CLOUD_SPEED.2=Time lapse 2
+
+option.END_CLOUDS=Moln i SLUTET
+
+option.CLOUD_STEPS_AVG=Samplingar för moln
+
+option.BLOOM=Glöd
+
+option.COLOR_BLINDNESS=Färgblindhetsläge
+
+option.COLOR_BLIND_MODE=Typ av färgblindhet
+value.COLOR_BLIND_MODE.0=Protanopi
+value.COLOR_BLIND_MODE.1=Deuteranopi
+value.COLOR_BLIND_MODE.2=Tritanopi
+
+option.DEBUG_MODE=Felsökning för Modo
+
+option.BLOOM_SAMPLES=Samplingspar för glöd
+
+option.BLACK_ENTITY_FIX=BUGGFIX för svarta entiteter
+value.BLACK_ENTITY_FIX.0=AV
+value.BLACK_ENTITY_FIX.1=PÅ
+
+option.FOG_ACTIVE=Dimma aktiverad
+
+option.FOG_ADJUST=Dimintensitet
+value.FOG_ADJUST.10.0=Ultra låg
+value.FOG_ADJUST.8.0=Mycket låg
+value.FOG_ADJUST.4.0=Låg
+value.FOG_ADJUST.2.0=Medium
+value.FOG_ADJUST.1.5=Hög
+
+option.NETHER_FOG_DISTANCE=Nether dimma avstånd
+value.NETHER_FOG_DISTANCE.0=Rendera avstånd
+value.NETHER_FOG_DISTANCE.1=Original
+
+option.BLOCKLIGHT_TEMP=Blockljustemperatur
+value.BLOCKLIGHT_TEMP.0=Varmare
+value.BLOCKLIGHT_TEMP.1=Varm
+value.BLOCKLIGHT_TEMP.2=Gul
+value.BLOCKLIGHT_TEMP.3=Ljusgul
+value.BLOCKLIGHT_TEMP.4=Vitt ljus
+
+option.sunPathRotation=Solvinkel
+
+option.USE_BASIC_SH=Enkel shader för anpassade dimensioner
+
+option.MATERIAL_GLOSS=Materialglans
+
+option.SIMPLE_AUTOEXP=Enklare exponering
+
+option.DYN_HAND_LIGHT=Konstgjort dynamiskt ljus
+
+#Screens
+screen.INFO_SCREEN=Avancerade alternativ
+screen.INFO_SCREEN.comment=Ändra avancerade alternativ
+
+screen.COMPATIBILITY_SCREEN=Kompatibilitet
+screen.COMPATIBILITY_SCREEN.comment=Ställ in kompatibilitetsalternativ
+
+screen.SHADOWS_SCREEN=Skuggor
+screen.SHADOWS_SCREEN.comment=Ändra skuggalternativ
+
+screen.DOF_SCREEN=Skärpedjup
+screen.DOF_SCREEN.comment=Ändra skärpedjupsalternativ
+
+screen.AO_SCREEN=Omgivande ocklusion
+screen.AO_SCREEN.comment=Ändra alternativ för omgivande ocklusion
+
+screen.WATER_SCREEN=Vatten
+screen.WATER_SCREEN.comment=Ändra vattenalternativ.
+
+screen.POST_SCREEN=Efterbehandling
+screen.POST_SCREEN.comment=Ändra efterbearbetningsalternativ.
+
+screen.LIGHT_SCREEN=Ljus
+screen.LIGHT_SCREEN.comment=Ändra ljusalternativ.
+
+screen.CLOUDS_SCREEN=Sol och moln
+screen.CLOUDS_SCREEN.comment=Ändra alternativ för sol och moln.
+
+screen.FOG_SCREEN=Dimma
+screen.FOG_SCREEN.comment=Ändra dimalternativ
+
+screen.MOTION_BLUR_SCREEN=Rörelseoskärpa
+screen.MOTION_BLUR_SCREEN.comment=Ändra rörelseskärpealternativ
+
+screen.ACCESIBILITY_SCREEN=Tillgänglighet
+screen.ACCESIBILITY_SCREEN.comment=Ändra tillgänglighetsalternativ
+
+screen.CUSTOM_COLORS_SCREEN=Anpassade färger
+screen.CUSTOM_COLORS_SCREEN.comment=Ställ in anpassade färger
+screen.CUSTOM_COLORS_DAY=Dag anpassade färger
+screen.CUSTOM_COLORS_SUNSET=Solnedgång/gryning anpassade färger
+screen.CUSTOM_COLORS_NIGHT=Natt anpassade färger
+screen.CUSTOM_COLORS_WATER=Vatten anpassad färg

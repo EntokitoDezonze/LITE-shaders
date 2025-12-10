@@ -1,0 +1,46 @@
+This is a MakeUp Ultrafast shaders modification that aims to make this amazing shader even faster! This shader maintains good looks while having great performance. Adding so many customization and a Portuguse translation. It can be used both by people with potato PCs that want to enhance Minecraft Java visual, and by people with good PCs who want high frame rates with good graphics and sharp shadows.
+
+Credits:
+
+Original creator: Javier Garduño
+Links:
+https://www.planetminecraft.com/mod/makeup-ultra-fast-shader
+https://www.curseforge.com/minecraft/customization/makeup-ultra-fast-shader
+https://github.com/javiergcim/MakeUpUltraFast
+
+Modfied and translated by @Entokito-Dezonze
+   __   ______________                       
+  / /  /  _/_  __/ __/                       
+ / /___/ /  / / / _/                         
+/____/___/ /_/ /____/               ____ ____
+  ___ / / ___ ____/ ___ _______    / / //_  /
+ (_-</ _ / _ `/ _  / -_/ __(_-<   /_  __ / / 
+/___/_//_\_,_/\_,_/\__/_/ /___/    /_/(_/_/  
+                                                    
+# LITE shaders version 4.7.3
+
+Changelog:
+
+- Thanks to tasxatzial for beta testing this version.
+
+# OVERVIEW:
+- This version fixes bugs and adjusts some features.
+
+# INHERITED from MakeUp 9.3h:
+- Much of the broken compatibility with previous versions of Minecraft (from 1.12 onward) has been fixed.
+- Fixed an issue that made the beacon beam invisible from certain distances or angles when using Distant Horizons.
+
+# General changes:
+- MAX stars on overworld are disabled on old versions of Minecraft. (below 1.16.4)
+- Reduced brightness of MAX stars.
+
+# Bugfixes:
+- Fixed weird lighting when enabling simpler exposure.
+- Fixed too bright scene when using simpler exposure + LITE Vanilla color scheme.
+- Fixed sky flicker when exiting pale garden or any gray sky biome.
+
+Version code: LT473
+
+Based in MakeUp Ultrafast 9.3e
+
+Olá de Entokito :) 

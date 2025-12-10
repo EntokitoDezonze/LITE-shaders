@@ -1,0 +1,12 @@
+#version 120
+/* MakeUp - LITE shaders 4.7.3 - gbuffers_skybasic.vsh
+Render: Sky
+
+Javier Garduño - GNU Lesser General Public License v3.0
+*/
+
+#define NETHER
+#define GBUFFER_SKYBASIC
+#define NO_SHADOWS
+
+#include "/common/skybasic_vertex.glsl"

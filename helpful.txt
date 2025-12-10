@@ -10,6 +10,9 @@ Teleport to Overworld:
 Stop time:
 /gamerule doDaylightCycle false
 
+Fast day:
+/tick rate 400
+
 Blindness:
 /effect give @p blindness 99999
 

@@ -1,0 +1,84 @@
+This is a [MakeUp - Ultra Fast](https://modrinth.com/shader/makeup-ultra-fast-shaders) shaders modification that aims to make this amazing shader even faster! This shader maintains good looks while having great performance. Adding so many customization and a Portuguese translation. It can be used both by people with potato PCs that want to enhance Minecraft Java visuals and by people with good PCs who want high frame rates with good graphics and sharp shadows.
+
+# TESTED ON:
+
+- Minecraft 1.12 - 1.21.x
+- NVIDIA, AMD and Intel, NO warranty that it works on all hardware.
+- Windows 10 and 11.
+
+# Features:
+
+Majority of these features can be turned off or reduced to enhance performance.
+
+- Shadow casting
+- Style button for fast switching of Realistic looks and Vanilla.
+- Colored shadows
+- Godrays
+- Adaptative contrast TAA (Temporal anti-aliasing)
+- Material based reflection (Gloss)
+- Realistic and Vanilla clouds
+- Ambient occlusion
+- Bloom and Motion blur
+- Realistic and Vanilla water
+- +10 customized color schemes
+- Optional auto-exposure
+- Fast Raymarch and Flipped image reflections
+- Distant horizons support (Iris only)
+- Water refraction
+- Depth of Field
+- And more...
+
+[Gallery](https://modrinth.com/shader/lite-shaders/gallery)
+
+<details>
+<summary>How to config?</summary>
+
+## PROFILES:
+- No effects: Pure shader
+- Shadowless: Low, Medium and MAX: Profiles with shadows turned off.
+- Very low - MAX: Progressively increase the quality and amount of effects at the cost of performance.
+- Choose the best for you!
+## COLOR SCHEME:
+- Change the color of sky and lighting. Realistic+ is the default and most recommended.
+## STYLE:
+- By clicking on the style button, you switch between Enhanced and Vanilla, Enhanced aims to be realistic, and Vanilla preserves the Minecraft
+aesthetic.
+## SCREENS:
+- Basic: Basic features of shader.
+- Lighting: Shadow quality, distance, light intensity, etc.
+- Effects: Majority of options of shader, separed into sub-screens, such as Rendering, Camera, etc.
+- Info: Information about the shader.
+
+</details>
+
+# How to install?
+- First, you need Iris shaders or OptiFine: https://irisshaders.dev/ https://optifine.net/downloads
+- Put LITE shaders.zip folder at .minecraft/shaderpacks
+- Launch Minecraft with Iris or OptiFine installed.
+- Open: "Options -> Video Settings -> Shaders"
+- Choose LITE shaders.
+
+# Recommendations:
+- Minecraft Java 1.12, 1.11 works but with some bugs.
+- Intel HD 4000 or better.
+- "Medium" profile.
+- Smart leaves turned off, as it can broke lighting.
+
+# CREDITS:
+
+Original creator: Javier Garduño
+Links:
+
+https://www.planetminecraft.com/mod/makeup-ultra-fast-shader
+https://www.curseforge.com/minecraft/customization/makeup-ultra-fast-shader
+https://github.com/javiergcim/MakeUpUltraFast
+
+Modified and translated by Entokito Dezonze.
+
+## Credits for forks of LITE shaders:
+- Add the credits of MakeUp and these links: (https://modrinth.com/shader/lite-shaders) (https://www.curseforge.com/minecraft/shaders/lite-shaders) plus creator credit: Modified and translated by @Entokito-Dezonze
+
+Made in Brazil!
+
+# WARNING:
+_**This shader is only available on MODRINTH, CURSEFORGE, PLANET MINECRAFT and TLMODS. Downloading it from any other site may not be safe. I haven't officially uploaded it to any other site.**_

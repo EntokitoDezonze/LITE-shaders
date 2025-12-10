@@ -1,0 +1,546 @@
+#Profiles Português Brasileiro/Portugal
+############################
+profile.no_effects=§lSem efeitos
+profile.shadowless_low=§lSem sombras §b§lBaixo
+profile.shadowless_medium=§lSem sombras §a§lMédio
+profile.shadowless_high=§lSem sombras §5§l§oMAX
+profile.very_low=§9§lMuito Baixo
+profile.low=§b§lBaixo
+profile.medium=§a§lMédio (Padrão)
+profile.high=§e§lAlto
+profile.extreme=§4§lExtremo
+profile.max=§5§l§oMAX
+
+
+profile.comment=Os perfis “Sem sombras” são feitos para máquinas de baixo desempenho, não tendo em conta as sombras. Os perfis tradicionais adicionam lentamente sombras de maior qualidade e efeitos mais avançados. Experimente as opções disponíveis e encontre a melhor combinação para você.
+
+#About
+#############################
+option.ACERCADE=§lLITE shaders
+option.ACERCADE.comment=Obrigado por utilizar este shader! :). Defina os controles de qualidade nativos do Iris ou OptiFine nos valores normais ou predefinidos para obter uma melhor qualidade. Tradução para Português e modificação por: @Entokito Dezonze
+value.ACERCADE.0=§5§l§oLT473
+
+#Style
+option.STYLE=§lEstilo
+value.STYLE.1=§6§lAprimorado
+value.STYLE.2=§b§lVanilla
+
+option.STYLE.comment=Aprimorado: Foca no visual, aprimorando a estética, Vanilla: Preserva a estética original do Minecraft
+
+#Options
+#############################
+option.SHADOW_CASTING=§6▶§r Sombras
+
+option.SHADOW_ENTITIES=§6▶§r Sombras de entidades
+option.SHADOW_ENTITIES.comment=Ativa as sombras para entidades e jogadores, desligar essa opção melhora a performance em até 30%.
+
+option.OMNI_MUL=Multiplicador de luz
+option.OMNI_MUL.comment=Ajusta o brilho da sombras e a cor da luz, Menos = mais escuro.
+
+option.SHARP_FORCE=Nitidez
+option.SATURATION=Saturação
+option.CONTRAST=Contraste
+option.BRIGHTNESS=Brilho
+option.GAMMA=Gamma
+option.VIBRANCE=Vibrância
+option.VIBRANCE.comment=Similar à saturação, mas deixa de saturar elementos muito brilhantes.
+option.PS1_LIKE=Efeito PS1
+option.PS1_LIKE.comment=Aplica um filtro de pixelização para a tela
+option.RED=Vermelho
+option.GREEN=Verde
+option.BLUE=Azul
+option.EXPOSURE=Exposição
+option.RAYMARCH_STEPS=§a▶§r Raios do §a§lRaymarching§r
+option.RAYMARCH_STEPS.comment=Ajusta a quantidade de raios do §a§lRaymarching§r, mais raios = mais qualidade, diminuir essa configuração pode melhorar o desempenho
+
+option.TONEMAPPING=Operador de tonemap
+option.TONEMAPPING.comment=Escolha o operador de tonemap, que ajusta as cores para uma melhor aparência. (Exceto o Psicodélico)
+value.TONEMAPPING.0=Legado
+value.TONEMAPPING.1=Lottes
+value.TONEMAPPING.2=ACES fílmico
+value.TONEMAPPING.3=Psicodélico
+
+screen.HDR_SCREEN= Cores/Tonemapping
+
+option.HDR=§b▶§r Maior gama de cores
+option.HDR.comment=Preserva mais a qualidade dos brilhos. Desativar pode melhorar a performance, mas a imagem perderá detalhes nas partes mais claras.
+
+option.DOF_HDR=§b▶§r Mais cores na Prof. de campo
+option.DOF_HDR.comment=Aumenta a gama de cores no efeito de Profundidade de campo. Desativar pode melhorar a performance ao usar a Prof. de campo, mas pode causar faixas/blocões de cor.
+
+option.COLOR_BITS=§b▶§r Bits de Cor
+option.COLOR_BITS.comment=Ajusta quantos bits de cores podem ser mostrados na tela. Mais bits: Mais cores. Reduzir pode melhorar a performance, porém pode causar faixas/blocões de cor. Esta opção só funciona com "Maior gama de cores" desligado.
+
+
+option.FOLIAGE_V=§9▶§r Folhas realistas
+option.FOLIAGE_V.comment=Ativa a transparência de luz para folhas e plantas.
+
+option.SHADOW_DISTANCE_SLIDER=§a▶§r Dist. da sombra
+option.SHADOW_DISTANCE_SLIDER.comment=É recomendado que a distância da sombra seja pouco mais de 80% da distância de renderização, para a melhor relação desempenho / qualidade.
+value.SHADOW_DISTANCE_SLIDER.1=§9§lMuito baixa §0§9(4 cks)
+value.SHADOW_DISTANCE_SLIDER.2=§9§lMuito baixa §0§9(5 cks)
+value.SHADOW_DISTANCE_SLIDER.3=§b§lBaixa §0§b(6 cks)
+value.SHADOW_DISTANCE_SLIDER.4=§a§lMédia §0§a(8 cks)
+value.SHADOW_DISTANCE_SLIDER.5=§a§lMédia §0§a(10 cks)
+value.SHADOW_DISTANCE_SLIDER.6=§e§lAlta §0§e(12 cks)
+value.SHADOW_DISTANCE_SLIDER.7=§4§lExtrema §0§4(14 cks)
+value.SHADOW_DISTANCE_SLIDER.8=§5§l§oMAX §0§5(16 cks)
+
+
+option.SHADOW_QTY_SLIDER=§c▶§r Qual. da sombra
+option.SHADOW_QTY_SLIDER.comment=Escolha com sabedoria, pois essa opção tem um impacto de performance muito alto. Média é o equilíbrio entre qualidade e desempenho.
+value.SHADOW_QTY_SLIDER.0=None
+value.SHADOW_QTY_SLIDER.1=§9§lMuito baixa
+value.SHADOW_QTY_SLIDER.2=§b§lBaixa
+value.SHADOW_QTY_SLIDER.3=§a§lMédia
+value.SHADOW_QTY_SLIDER.4=§e§lAlta
+value.SHADOW_QTY_SLIDER.5=§4§lExtrema
+value.SHADOW_QTY_SLIDER.6=§5§l§oMAX
+
+option.REFLECTION_SLIDER=§a▶§r Reflexos (Screen-Space)
+option.REFLECTION_SLIDER.comment=§b§lBaixo§r: Usa um método mais simples que inverte a imagem para simular reflexos, mas pode ser impreciso. §e§lAlto§r: Usa §a§lRaymarching§r, mais preciso, porém mais lento.
+value.REFLECTION_SLIDER.0=Off
+value.REFLECTION_SLIDER.1=§b§lBaixo
+value.REFLECTION_SLIDER.2=§e§lAlto
+
+option.SHADOW_TYPE=§9▶§r Tipo da sombra
+option.SHADOW_TYPE.comment=Simples: Sombra simples, sem filtragem. Filtrada: Adiciona um desfoque nas sombras para melhorar a aparência.
+value.SHADOW_TYPE.0=Simples
+value.SHADOW_TYPE.1=Filtrada
+
+option.SHADOW_BLUR=Int. do borrão da sombra
+
+option.COLORED_SHADOW=§9▶§r Sombras coloridas
+option.COLORED_SHADOW.comment=Ativa sombras coloridas para vidro colorido e gelo. (ative esta opção antes de ativas as cáusticas)
+
+option.CAUSTICS=§9▶§r Cáusticas
+option.CAUSTICS_INTENSITY=Força das cáusticas
+option.CAUSTICS.comment=Faz a água projetar sombras em tempo real baseadas nas suas ondas. §l(Requer sombras coloridas ativadas)
+
+
+option.VOL_LIGHT=§e▶§r Raios de luz
+option.VOL_LIGHT.comment=Baseado em profundidade: Ativa raios de luz baseados em profundidade, são um pouco lentos, mas podem funcionar melhor que a luz volumétrica para distâncias de sombra muito curtas. Volumétrico: Ativa a luz volumétrica, mais precisa e rápida, mas precisa das sombras ativadas para funcionar.
+value.VOL_LIGHT.0=Desligado
+value.VOL_LIGHT.1=Profundidade
+value.VOL_LIGHT.2=Volumétrico
+
+option.GODRAY_STEPS=§b▶§r Qual. raios de luz
+value.GODRAY_STEPS.2=§9§lMuito baixo
+value.GODRAY_STEPS.3=§b§lBaixo
+value.GODRAY_STEPS.4=§a§lMédio
+value.GODRAY_STEPS.5=§e§lAlto
+value.GODRAY_STEPS.6=§4§lExtremo
+value.GODRAY_STEPS.7=§5§l§oMAX
+
+option.DOF=§a▶§r Profundidade de campo
+option.DOF.comment=Ativa o desfoque baseado em profundidade de campo, impacto médio no desempenho.
+
+option.DOF_STRENGTH=Força da prof. de campo
+value.DOF_STRENGTH.1.0=§5§l§oMAX
+
+option.DOF_SAMPLES_FACTOR=DoF samples factor
+
+option.VANILLA_AO=§1▶§r OA Vanilla
+option.VANILLA_AO.comment=Usa a Oclusão de ambiente do Minecraft, muito mais rápida que a padrão.
+value.VANILLA_AO.0=Desligado
+value.VANILLA_AO.1=Ligado
+
+option.AO=§a▶§r Oclusão de ambiente
+value.AO.0=Desligado
+value.AO.1=Ligado
+
+option.AOSTEPS=Qualidade da OA
+value.AOSTEPS.2.0=§lMínima
+value.AOSTEPS.3.0=§9§lMuito baixa
+value.AOSTEPS.4.0=§b§lBaixa
+value.AOSTEPS.5.0=§a§lMédia
+value.AOSTEPS.6.0=§e§lAlta
+value.AOSTEPS.7.0=§c§lMuito alta
+value.AOSTEPS.8.0=§4§lExtrema
+value.AOSTEPS.10.0=§5§l§oMAX
+
+option.AO_STRENGTH=Força da OA
+
+option.AA_TYPE=§b▶§r Antialiasing
+option.AA_TYPE.comment=Ativa o Antialiasing. Antiruído não tem antialiasing, mas tem anti-dithering. TAA Inteligente usa contraste adaptativo para aplicar a nitidez, Usar o TAA normal não é recomendado, pois a imagem pode parecer muito borrada.
+value.AA_TYPE.0=Desligado
+value.AA_TYPE.1=Antiruído
+value.AA_TYPE.2=TAA §c§l(!)
+value.AA_TYPE.3=§b§lTAA Inteligente
+
+option.MOTION_BLUR=§b▶§r Desfoque de movimento
+option.MOTION_BLUR.comment=Ativa o desfoque de movimento.
+
+option.MOTION_BLUR_STRENGTH=Força do desfoque de mov.
+option.MOTION_BLUR_SAMPLES=Qual. do desfoque de mov.
+option.MOTION_BLUR_SAMPLES.comment=Ajusta a qualidade do desfoque de movimento.
+
+value.MOTION_BLUR_SAMPLES.2.0=§9§lMuito baixa
+value.MOTION_BLUR_SAMPLES.3.0=§b§lBaixa
+value.MOTION_BLUR_SAMPLES.4.0=§a§lMédia
+value.MOTION_BLUR_SAMPLES.5.0=§e§lAlta
+value.MOTION_BLUR_SAMPLES.6.0=§c§lMuito alta
+value.MOTION_BLUR_SAMPLES.7.0=§4§lExtrema
+value.MOTION_BLUR_SAMPLES.8.0=§5§l§oMAX
+
+option.VANILLA_WATER=Água vanilla
+
+option.USE_WATER_TEXTURE=Textura da água
+value.USE_WATER_TEXTURE.-1=Usar do estilo
+value.USE_WATER_TEXTURE.0=Não
+value.USE_WATER_TEXTURE.1=Sim
+
+option.WATER_COLOR_SOURCE=Cor da água
+value.WATER_COLOR_SOURCE.0=Esquema do shader
+value.WATER_COLOR_SOURCE.1=Pacote de recursos
+
+option.REFLECTION=Reflexos
+value.REFLECTION.0=Off
+value.REFLECTION.1=On
+
+option.REFRACTION=§9▶§r Refração
+option.REFRACTION.comment=Ativa a distorção da luz na água.
+value.REFRACTION.0=Off
+value.REFRACTION.1=On
+
+option.SSR_TYPE=Tipo do Reflexo
+value.SSR_TYPE.0=Flipped image
+value.SSR_TYPE.1=§a§lRaymarching§r
+
+option.SUN_REFLECTION=§b▶§r Reflexo do sol/lua
+value.SUN_REFLECTION.0=Off
+value.SUN_REFLECTION.1=On
+
+option.CLOUD_REFLECTION=§b▶§r Reflex. das nuvens vol.
+option.CLOUD_REFLECTION.comment=Faz as nuvens volumétricas criarem reflexos
+
+option.WAVING=§9▶§r Movimento em plantas
+option.WAVING.comment=Faz blocos com grama e folhas se moverem com o vento
+value.WAVING.0=Não
+value.WAVING.1=Sim
+
+option.CHROMA_ABER=§1▶§r Aberração cromática
+
+option.CHROMA_ABER_STRENGTH=Força da aberração c.
+
+option.WATER_ABSORPTION=Transparência da água
+option.WATER_ABSORPTION.comment=Define o quanto de luz a água absorve. Baixos valores deixam a água mais transparente. Altos valores a deixam mais opaca.
+option.WATER_FOG= Neblina da água
+
+option.USE_WATER_TURBULENCE=Força das ondas
+value.USE_WATER_TURBULENCE.-1=Usar do estilo
+value.USE_WATER_TURBULENCE.0=Muito baixa
+value.USE_WATER_TURBULENCE.1=Baixa
+value.USE_WATER_TURBULENCE.2=Média
+value.USE_WATER_TURBULENCE.3=Alta
+
+option.COLOR_SCHEME=§lEsquema de cores
+option.COLOR_SCHEME.comment=Ethereal: Tema padrão antigo (MakeUp). New shoka: Reinterpretação de um clássico (MakeUp). Shoka: O clássico (MakeUp). Legacy: Padrão muito antigo (MakeUp). Captain: Um preset frio de cores estilosas (MakeUp). Psycodelic: Remaster de um esquema vívido antigo (MakeUp). Cocoa: Tema quente (MakeUp). §b§lRealístico+: Cores de céu realistas. Realístico (pol): Realista, mas simula poluição. LITE Legacy: Cores do LITE 3.3. LITE Vanilla: cores vanilla. LITE Sombrio: Cores sombrias e assustadoras. Customizado: Escolha suas cores em efeitos -> cores customizadas.
+value.COLOR_SCHEME.0=Ethereal
+value.COLOR_SCHEME.1=New shoka
+value.COLOR_SCHEME.2=Shoka
+value.COLOR_SCHEME.3=Legacy
+value.COLOR_SCHEME.4=Captain
+value.COLOR_SCHEME.5=Psychedelic
+value.COLOR_SCHEME.6=Cocoa
+value.COLOR_SCHEME.7=Testigo
+value.COLOR_SCHEME.8=§b§lRealístico+
+value.COLOR_SCHEME.9=§b§lRealístico (poluição)
+value.COLOR_SCHEME.10=§6§lLITE legado
+value.COLOR_SCHEME.11=§f§lLITE Vanilla
+value.COLOR_SCHEME.12=§4§lLITE Sombrio
+value.COLOR_SCHEME.99=Customizado
+
+option.LIGHT_SUNSET_COLOR_R=Luz do Nascer do sol R
+option.LIGHT_SUNSET_COLOR_G=Luz do Nascer do sol G
+option.LIGHT_SUNSET_COLOR_B=Luz do Nascer do sol B
+
+option.LIGHT_DAY_COLOR_R=Luz do dia R
+option.LIGHT_DAY_COLOR_G=Luz do dia G
+option.LIGHT_DAY_COLOR_B=Luz do dia B
+
+option.LIGHT_NIGHT_COLOR_R=Luz da noite R
+option.LIGHT_NIGHT_COLOR_G=Luz da noite G
+option.LIGHT_NIGHT_COLOR_B=Luz da noite B
+
+option.ZENITH_SUNSET_COLOR_R=Zênite do nascer do sol R
+option.ZENITH_SUNSET_COLOR_G=Zênite do nascer do sol G
+option.ZENITH_SUNSET_COLOR_B=Zênite do nascer do sol B
+
+option.ZENITH_DAY_COLOR_R=Zênite do dia R
+option.ZENITH_DAY_COLOR_G=Zênite do dia G
+option.ZENITH_DAY_COLOR_B=Zênite do dia B
+
+option.ZENITH_NIGHT_COLOR_R=Zênite da noite R
+option.ZENITH_NIGHT_COLOR_G=Zênite da noite G
+option.ZENITH_NIGHT_COLOR_B=Zênite da noite B
+
+option.HORIZON_SUNSET_COLOR_R=Horiz. do nascer do sol R
+option.HORIZON_SUNSET_COLOR_G=Horiz. do nascer do sol G
+option.HORIZON_SUNSET_COLOR_B=Horiz. do nascer do sol B
+
+option.HORIZON_DAY_COLOR_R=Horizonte do dia R
+option.HORIZON_DAY_COLOR_G=Horizonte do dia G
+option.HORIZON_DAY_COLOR_B=Horizonte do dia B
+
+option.HORIZON_NIGHT_COLOR_R=Horizonte da noite R
+option.HORIZON_NIGHT_COLOR_G=Horizonte da noite G
+option.HORIZON_NIGHT_COLOR_B=Horizonte da noite B
+
+option.WATER_COLOR_R=Água R
+option.WATER_COLOR_G=Água G
+option.WATER_COLOR_B=Água B
+
+option.NV_COLOR_R=Visão noturna R multiplier
+option.NV_COLOR_G=Visão noturna G multiplier
+option.NV_COLOR_B=Visão noturna B multiplier
+
+option.OMNI_TINT_CUSTOM=Omni tint
+
+option.AVOID_DARK_LEVEL=Luz mínima
+option.AVOID_DARK_LEVEL.comment=Intensidade de luz mínima (porcentagem).
+value.AVOID_DARK_LEVEL.0.50=FULLBRIGHT
+
+option.NIGHT_BRIGHT=Brilho da noite
+
+option.V_CLOUDS=§a▶§r Nuvens
+option.V_CLOUDS.comment=Volumétrica estática: As nuvens se movem, mas mantêm sua forma. Volumétrica dinâmica: As nuvens mudam de forma com o tempo, uma paisagem de nuvens diferente a cada vez (impacto médio no desempenho). Vanilla: Nuvens vanilla originais.
+value.V_CLOUDS.-1=Off
+value.V_CLOUDS.0=Vanilla +Better Clouds
+value.V_CLOUDS.1=Vol. estática
+value.V_CLOUDS.2=Vol. dinâmica
+
+option.SUN_MUL=Brilho do sol
+option.MOON_MUL=Brilho da lua
+
+option.ASTRO_POWER=Potência do sol/lua
+option.ASTRO_POWER.comment=Eleva a cor do sol e a lua pelos valores. 0.5 = raiz quadrada; 2.0 = elevar ao quadrado; 1.0 = padrão.
+
+option.CLOUD_DENSITY=Densidade das nuvens
+option.CLOUD_DENSITY.comment=Ajusta a densidade das nuvens. Maior valor = menor densidade. Menor valor = maior densidade.
+
+option.CIRRUS=§b▶§r Nuvens cirrus
+option.CIRRUS.comment=Ativa uma segunda camada de nuvens no céu. Impacto baixo na performance.
+
+option.USE_CLOUD_VOL_STYLE=Estilo da nuvem vol.
+value.USE_CLOUD_VOL_STYLE.-1=Usar do estilo
+value.USE_CLOUD_VOL_STYLE.0=Natural
+value.USE_CLOUD_VOL_STYLE.1=Cúbica
+
+option.CLOUD_SPEED=Velocidade das nuvens
+value.CLOUD_SPEED.0=Normal
+value.CLOUD_SPEED.1=Time lapse 1
+value.CLOUD_SPEED.2=Time lapse 2
+
+option.END_CLOUDS=Nuvens no Fim
+
+option.CLOUD_STEPS_AVG=§e▶§r Qualidade das nuvens
+value.CLOUD_STEPS_AVG.3=§b§lBaixa
+value.CLOUD_STEPS_AVG.4=§a§lMédia
+value.CLOUD_STEPS_AVG.5=§e§lAlta
+value.CLOUD_STEPS_AVG.10=§c▶§r §5§l§oMAX
+
+option.CIRRUS_STEPS_AVG=§e▶§r Qualidade das nuv. cirrus
+value.CIRRUS_STEPS_AVG.3=§b§lBaixa
+value.CIRRUS_STEPS_AVG.4=§a§lMédia
+value.CIRRUS_STEPS_AVG.5=§e§lAlta
+value.CIRRUS_STEPS_AVG.10=§c▶§r §5§l§oMAX
+
+option.SIMPLE_SKY=§b▶§r Tipo do céu
+option.SIMPLE_SKY.comment=Apenas use esta opção com o esquema §b§lRealístico+§r, e se quiser o céu antigo do LITE, ou para melhorar ~5% da performance.
+value.SIMPLE_SKY.0=§5§lLITE 4.7.3
+value.SIMPLE_SKY.1=LITE 4.1
+
+
+option.BLOOM=§b▶§r Bloom
+option.BLOOM.comment=Ativa um desfoque em torno de blocos brilhantes.
+
+option.COLOR_BLINDNESS=Daltonismo
+
+option.COLOR_BLIND_MODE=Tipo de daltonismo
+value.COLOR_BLIND_MODE.0=Protanopia
+value.COLOR_BLIND_MODE.1=Deuteranopia
+value.COLOR_BLIND_MODE.2=Tritanopia
+
+option.CB_STRENGTH=Força do filtro de dalt.
+
+option.DEBUG_MODE=Modo de depuração
+
+option.BLOOM_SAMPLES=§a▶§r Qualidade do bloom
+value.BLOOM_SAMPLES.2.0=§9§lMuito baixa
+value.BLOOM_SAMPLES.3.0=§b§lBaixa
+value.BLOOM_SAMPLES.4.0=§a§lMédia
+value.BLOOM_SAMPLES.5.0=§e§lAlta
+value.BLOOM_SAMPLES.6.0=§c§lMuito alta
+value.BLOOM_SAMPLES.7.0=§4§lExtrema
+value.BLOOM_SAMPLES.8.0=§5§l§oMAX
+
+option.BLOOM_STRENGTH=Força do bloom
+value.BLOOM_STRENGTH.2.0=§5§l§oMAX
+
+option.BLACK_ENTITY_FIX=Bugfgix entidades pretas
+value.BLACK_ENTITY_FIX.0=Não
+value.BLACK_ENTITY_FIX.1=Ligado
+
+option.FOG_ACTIVE=§9▶§r Neblina
+option.FOG_ACTIVE.comment=Ativa a neblina.
+
+option.FOG_ADJUST=Intensidade da neblina
+value.FOG_ADJUST.20.0=Sem neblina
+value.FOG_ADJUST.10.0=Ultra baixa
+value.FOG_ADJUST.8.0=Muito baixa
+value.FOG_ADJUST.4.0=Baixa
+value.FOG_ADJUST.2.0=Média
+value.FOG_ADJUST.1.5=Alta
+value.FOG_ADJUST.1.0=§5§l§oMAX
+
+option.NETHER_FOG_DISTANCE=Dist. neblina do Nether
+value.NETHER_FOG_DISTANCE.0=Renderização
+value.NETHER_FOG_DISTANCE.1=Vanilla
+
+option.BLOCKLIGHT_TEMP=Cor da luz de bloco
+value.BLOCKLIGHT_TEMP.-1=Muito quente
+value.BLOCKLIGHT_TEMP.0=Mais quente
+value.BLOCKLIGHT_TEMP.1=Quente
+value.BLOCKLIGHT_TEMP.2=Amarela
+value.BLOCKLIGHT_TEMP.3=Amarelo pálido
+value.BLOCKLIGHT_TEMP.4=Branca
+value.BLOCKLIGHT_TEMP.5=Azul
+
+option.sunPathRotation=Ângulo do sol
+suffix.sunPathRotation = °
+
+option.USE_BASIC_SH=Usar dimensões customizadas
+option.USE_BASIC_SH.comment=Faz o shader funcionar em dimensões customizadas de mods.
+
+option.MATERIAL_GLOSS=§b▶§r Brilho do material
+option.MATERIAL_GLOSS.comment=Um efeito que adiciona capacidade de refletir luz direta em alguns blocos. É mais perceptível em metais e objetos luminosos. (Custo de desempenho baixo-médio)
+
+option.SIMPLE_AUTOEXP=§1▶§r Exposição simples
+option.SIMPLE_AUTOEXP.comment=Desativa a exposição automática.
+
+option.EMMISIVE_ORE=§b▶§r Minérios brilhantes
+option.EMMISIVE_ORE.comment=Ativa um brilho nos minérios de diamante, ferro, ouro, etc.
+
+option.EMMISIVE_MATERIAL=§b▶§r Materiais brilhantes
+option.EMMISIVE_MATERIAL.comment=Ativa um brilho em materiais como Mesa de encantamentos e Repetidores de redstone.
+
+option.DYN_HAND_LIGHT=§1▶§r Luz dinâmica falsa
+
+option.FAKE_BLOOM=§1▶§r Bloom falso
+option.FAKE_BLOOM.comment=Adiciona mais brilho a blocos luminosos.
+option.VIGNETTE=§1▶§r Vinheta
+option.VIGNETTE.comment=Adiciona uma vinheta à tela.
+option.FILM_GRAIN=§1▶§r Film grain
+option.FILM_GRAIN.comment=Adiciona o granulado de filme à tela.
+option.VIGNETTE_FACTOR=Força da vinheta
+option.GRAIN_FACTOR=Força do granulado
+option.WIND_FORCE=Força do vento
+
+option.BIOME_SKY=§b▶§r Céu de bioma
+option.BIOME_SKY.comment=Faz as cores do céu se alterarem em certos biomas. (Funciona apenas no esquema de cores §b§lRealístico+§r e no §4§lLITE Sombrio§r)
+
+option.BIOME_FOG=§b▶§r Neblina de bioma
+option.BIOME_FOG.comment=Faz a neblina ficar mais densa em certos biomas.
+
+option.STAR_SLIDER=§a▶§r Estrelas
+option.STAR_SLIDER.comment=Ajusta a qualidade das estrelas, §5§l§oMAX§r pode afetar a performance baseado na resolução, maior resolução = maior impacto, em 1080p o impacto é de ~8%, pode não funcionar no OptiFine.
+value.STAR_SLIDER.0=Off
+value.STAR_SLIDER.1=§b§lVanilla
+value.STAR_SLIDER.2=§5§l§oMAX
+
+option.END_STARS=§9▶§r Estrelas no The End
+option.END_STARS.comment=Ativa estrelas no The End.
+
+option.STARS_BRIGHTNESS=Brilho das estrelas
+option.STARS_BRIGHTNESS.comment=Multiplicador de brilho das estrelas.
+
+option.STARS_COVERAGE=Cobertura das estrelas
+option.STARS_COVERAGE.comment=Multiplicador de cobertura das estrelas, Apenas afeta as estrelas §5§l§oMAX§r.
+
+option.CUSTOM_SKYFIX=Correção de céus pers.
+option.CUSTOM_SKYFIX.comment=Corrige as cores dos céus personalizados.
+
+option.SANDSTORM=§9▶§r Tempestade de areia
+option.SANDSTORM.comment=Ativa tempestades de areia em biomas áridos. (Ative Neblina de bioma antes de ativar esta opção)
+
+#Screens
+screen.BASIC_SCREEN=§lBásico ●
+screen.EFFECTS_SCREEN=§lEfeitos ★
+screen.LIGHTING_SCREEN=§lLuz ⚡
+
+screen.INFO_SCREEN=§lInfo ?
+screen.INFO_SCREEN.comment= Informações potencialmente úteis.
+
+option.HOVER=Passe o mouse
+option.HOVER.comment=Olá! Aqui você pode ter algumas informações de LITE shaders!
+value.HOVER.0=
+
+option.VERSION=Info. da versão
+option.VERSION.comment=Nome: §lLITE §rshaders §5§l4.7.3§r. Build: BETA. Código: §5§l§oLT473§r. Data da versão: 9 de Dezembro de 2025. Baseado no MakeUp Ultrafast 9.3e
+value.VERSION.0=
+
+option.PROFILES=Perfis Gráficos
+option.PROFILES.comment=Sem efeitos: Shader puro. Shadowless (sem sombras): De baixo a MAX, e são os perfis normais com as sombras desativadas. Muito baixo - MAX: Aumenta progressivamente a qualidade e a quantidade de efeitos, mas custa desempenho; escolha o melhor para você!
+value.PROFILES.0=
+
+option.STYLES=Estilos
+option.STYLES.comment=Ao clicar no botão de estilo, você alterna entre Aprimorado e Vanilla, sendo que o Aprimorado mira em ser realista e o Vanilla preserva a estética do Minecraft.
+value.STYLES.0=
+
+option.PERF_IMPACT=Impacto na perf.
+option.PERF_IMPACT.comment=§6▶ Variável. §1▶ Zero. §9▶ Muito baixo. §b▶ Baixo. §a▶ Médio. §e▶ Alto. §c▶ Muito alto.
+value.PERF_IMPACT.0=
+
+option.CREDITS=Créditos
+option.CREDITS.comment=Entokito-Dezonze: o modificador e o tradutor para PT-BR e PT-PT desse shader. Javier Garduño: O criador do MakeUp Ultrafast, sem ele, LITE shaders não seria possível. Obrigado!
+value.CREDITS.0=
+
+# End of info
+
+screen.RENDER_SCREEN=Renderização
+screen.RENDER_SCREEN.comment=Definir opções de renderização.
+
+screen.CAMERA_SCREEN=Câmera
+screen.CAMERA_SCREEN.comment=Definir opções de câmera.
+
+screen.COMPATIBILITY_SCREEN=Compatibilidade
+screen.COMPATIBILITY_SCREEN.comment=Definir opções de compatibilidade.
+
+screen.SHADOWS_SCREEN=Sombras
+screen.SHADOWS_SCREEN.comment=Definir opções de sombras.
+
+screen.BLOOM_SCREEN=Bloom
+screen.BLOOM_SCREEN.comment=Definir opções de bloom.
+
+screen.AO_SCREEN=Oclusão de ambiente
+screen.AO_SCREEN.comment=Definir opções de oclusão de ambiente.
+
+screen.WATER_SCREEN=Água
+screen.WATER_SCREEN.comment=Definir opções de água.
+
+screen.POST_SCREEN= Pós processamento
+screen.POST_SCREEN.comment=Definir opções de pós processamento.
+
+screen.LIGHT_SCREEN=Luz
+screen.LIGHT_SCREEN.comment=Definir opções de luz.
+
+screen.CLOUDS_SCREEN=Sol & nuvens
+screen.CLOUDS_SCREEN.comment=Definir opções de sol e nuvens.
+
+screen.SKY_SCREEN=Céu
+screen.SKY_SCREEN.comment=Definir opções do céu.
+
+screen.MOTION_BLUR_SCREEN=Desfoque de movimento
+screen.MOTION_BLUR_SCREEN.comment=Definir opções de desfoque de movimento.
+
+screen.ACCESIBILITY_SCREEN=Acessibilidade
+screen.ACCESIBILITY_SCREEN.comment=Definir opções de acessibilidade.
+
+screen.CUSTOM_COLORS_SCREEN=Cores customizadas
+screen.CUSTOM_COLORS_SCREEN.comment=Definir cores customizadas. (USE O ESQUEMA DE CORES "Customizado" PARA AS ALTERAÇÕES TEREM EFEITO)
+screen.CUSTOM_COLORS_DAY=Cores customidzadas do dia
+screen.CUSTOM_COLORS_SUNSET=Cores customizadas do pôr do sol
+screen.CUSTOM_COLORS_NIGHT=Cores customizadas da noite
+screen.CUSTOM_COLORS_WATER=Cores customizadas da água
+screen.CUSTOM_COLORS_NV=Cores customizadas da visão noturna

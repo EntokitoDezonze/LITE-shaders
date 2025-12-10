@@ -1,0 +1,12 @@
+#version 120
+/* MakeUp - LITE shaders 4.7.3 - gbuffers_skytextured.vsh
+Render: sun, moon
+
+Javier Garduño - GNU Lesser General Public License v3.0
+*/
+
+#define NETHER
+#define GBUFFER_SKYTEXTURED
+#define NO_SHADOWS
+
+#include "/common/skytextured_vertex.glsl"
