@@ -1,3 +1,5 @@
+# LITE shaders (MakeUp edit)
+
 This is a [MakeUp - Ultra Fast](https://modrinth.com/shader/makeup-ultra-fast-shaders) shaders modification that aims to make this amazing shader even faster! This shader maintains good looks while having great performance. Adding so many customization and a Portuguese translation. It can be used both by people with potato PCs that want to enhance Minecraft Java visuals and by people with good PCs who want high frame rates with good graphics and sharp shadows.
 
 # TESTED ON:
