@@ -114,10 +114,6 @@ float vis_sky_8 = vis_sky_4 * vis_sky_4;
     vec3 omni_color_min = omni_color * luma_ratio;
     omni_color = max(omni_color, omni_color_min);
 
-    float vis_sky_2 = visible_sky * visible_sky;
-    float vis_sky_4 = vis_sky_2 * vis_sky_2;
-    float vis_sky_8 = vis_sky_4 * vis_sky_4;
-
     #ifndef SIMPLE_AUTOEXP
         omni_color_min = mix(omni_color_min, omni_color_min * day_blend_float(1.0, 10.0, 1.5), vis_sky_2);
     #endif

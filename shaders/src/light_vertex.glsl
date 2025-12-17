@@ -130,6 +130,10 @@ float omni_strength = (direct_light_strength * .125) + 1.0;
     }
 #endif
 
+float vis_sky_2 = visible_sky * visible_sky;
+float vis_sky_4 = vis_sky_2 * vis_sky_2;
+float vis_sky_8 = vis_sky_4 * vis_sky_4;
+
 // Omni light color
 #if defined THE_END
     omni_light = LIGHT_DAY_COLOR;
@@ -164,10 +168,6 @@ float omni_strength = (direct_light_strength * .125) + 1.0;
     vec3 omni_color_min = omni_color * luma_ratio;
     omni_color = max(omni_color, omni_color_min);
 
-    float vis_sky_2 = visible_sky * visible_sky;
-    float vis_sky_4 = vis_sky_2 * vis_sky_2;
-    float vis_sky_8 = vis_sky_4 * vis_sky_4;
-
     #ifndef SIMPLE_AUTOEXP
         omni_color_min = mix(omni_color_min, omni_color_min * day_blend_float(1.0, 10.0, 1.5), vis_sky_2);
     #endif
@@ -190,10 +190,6 @@ float omni_strength = (direct_light_strength * .125) + 1.0;
     #ifndef SHADOW_CASTING
         // Fake shadows
         if (isEyeInWater == 0) {
-            // --- OPTIMIZATION #4: Replace pow(x, 10.0) with multiplications. ---
-            float vis_sky_2 = visible_sky * visible_sky;
-            float vis_sky_4 = vis_sky_2 * vis_sky_2;
-            float vis_sky_8 = vis_sky_4 * vis_sky_4;
             direct_light_strength = mix(0.0, direct_light_strength, vis_sky_8 * vis_sky_2);
         } else {
             direct_light_strength = mix(0.0, direct_light_strength, visible_sky);
