@@ -32,6 +32,8 @@ Some of the code is inspired by the ideas presented below:
   Based on:
   https://developer.oculus.com/blog/tech-note-shader-snippets-for-efficient-2d-dithering/
 
+- Blocky clouds were inspired by rre36's Nostalgia Shader, however, no code was used from said shader.
+
 ------
 
 If any functions were listed here, and are no longer listed,

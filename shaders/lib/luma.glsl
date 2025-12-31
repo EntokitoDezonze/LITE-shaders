@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.7.3 - luma.glsl
+/* MakeUp - LITE shaders 4.8 - luma.glsl
 Luma related functions.
 
 Javier Garduño - GNU Lesser General Public License v3.0
@@ -35,3 +35,9 @@ vec3 vibrance(vec3 color, float amount) {
 
     return saturate(color, final_sat);
 } // Only saturates low-saturation colors.
+
+float get_sat(vec4 color) {
+    float maxC = max(max(color.r, color.g), color.b);
+    float minC = min(min(color.r, color.g), color.b);
+    return maxC - minC;
+}

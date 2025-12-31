@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.7.3 - emissive_materials.glsl #include "/lib/emissive_materials.glsl"
+LITE shaders 4.8 - emissive_materials.glsl #include "/lib/emissive_materials.glsl"
 Emissive properties for ores, some materials, particles and entities. - Propriedades emissivas para minérios, alguns materiais, partículas e entidades. */
 
 vec3 emmisive_color = vec3(1.0);
@@ -14,7 +14,7 @@ vec3 emmisive_color = vec3(1.0);
     vec3 color = pure_block_color.rgb;
     vec3 sqrt_color = sqrt(pure_block_color.rgb);
     float luma_color = luma(sqrt(pure_block_color.rgb)); 
-
+    float luminance = luma(pure_block_color.rgb);
     // * luma_color = pow(x, 1.5);
     // * luma(color) = pow(x, 2.0);
 
@@ -24,14 +24,12 @@ vec3 emmisive_color = vec3(1.0);
     if (ore_type > 0 || emitter_type > 0) {
         
         float saturation = 0.0;
-        float luminance = 0.0;
         correct_light_ore = clamp(luma(1.0 - real_light), 0.5, 1.0);
         correct_light = clamp(luma(2.0 - real_light), 0.5, 1.0);
         
         float min_color = min(min(color.r, color.g), color.b);
         float max_color = max(max(color.r, color.g), color.b);
         saturation = (max_color - min_color) / (max_color + 0.0001);
-        luminance = block_luma;
 
 
     #if defined EMMISIVE_ORE && defined GBUFFER_TERRAIN
@@ -70,7 +68,7 @@ vec3 emmisive_color = vec3(1.0);
         float match_cond_1_emerald = step(dot(color - target_color_dark_emerald, color - target_color_dark_emerald), 0.09);
         float match_cond_2_emerald = step(dot(color - target_color_light_emerald, color - target_color_light_emerald), 0.49);
         float emerald_match = clamp(match_cond_1_emerald + match_cond_2_emerald, 0.0, 1.0);
-        emerald_match *= step(0.14, saturation) * step(0.2, luminance);
+        emerald_match *= step(0.14, saturation);
         emmisive_color = mix(emmisive_color, emmisive_color * 10.0 * luma_color * vec3(0.25, 0.6, 0.2) * correct_light_ore, emerald_match * factor_emerald);
 
         // REDSTONE (ore_type == 5)
@@ -133,13 +131,13 @@ vec3 emmisive_color = vec3(1.0);
         vec3 target_color_alt_redmat = vec3(1.0);
         vec3 target_color_alt2_redmat = vec3(0.75, 0.5, 0.0);
         vec3 target_color_redmat = vec3(1.0, 0.0, 0.0);
-        vec3 target_color_light_redmat = vec3(1.0, 0.0, 0.0);
+        vec3 target_color_light_redmat = vec3(1.0, 0.6, 0.6);
         
         float base_sat_lum_redmat = step(0.15, saturation) * step(0.1, luminance);
         float match_1_redmat = step(dot(color - target_color_redmat, color - target_color_redmat), 0.3) * base_sat_lum_redmat;
         float match_2_redmat = step(dot(color - target_color_light_redmat, color - target_color_light_redmat), 0.12) * step(luminance, 0.8) * step(0.3, saturation);
         float match_3_redmat = step(dot(color - target_color_alt_redmat, color - target_color_alt_redmat), 0.07);
-        float match_4_redmat = step(dot(color - target_color_alt2_redmat, color - target_color_alt2_redmat), 0.8) * step(0.9, luminance) * step(0.15, saturation);
+        float match_4_redmat = step(dot(color - target_color_alt2_redmat, color - target_color_alt2_redmat), 0.8) * step(0.55, luminance) * step(0.15, saturation);
         
         vec3 final_emissive_redmat = vec3(1.0);
         float total_match_redmat = 0.0;
@@ -231,11 +229,11 @@ vec3 emmisive_color = vec3(1.0);
         vec3 target_color_dark_2_lba = vec3(1.0, 0.0, 0.0);
         vec3 target_color_light_lba = vec3(0.0, 0.651, 1.0);
         
-        float match_1_lba = step(dot(color - target_color_dark_lba, color - target_color_dark_lba), 0.5) * step(0.5, saturation) * step(0.2, luminance);
+        float match_1_lba = step(dot(color - target_color_dark_lba, color - target_color_dark_lba), 0.4) * step(0.5, saturation) * step(0.2, luminance);
         float match_2_lba = step(dot(color - target_color_dark_2_lba, color - target_color_dark_2_lba), 0.6) * step(saturation, 0.67) * step(luminance, 0.6); 
         float match_3_lba = step(dot(color - target_color_light_lba, color - target_color_light_lba), 1.0);
 
-        emmisive_color = mix(emmisive_color, emmisive_color * 1.75 * correct_light * vec3(1.0, 0.55, 1.0), match_1_lba * factor_lba);
+        emmisive_color = mix(emmisive_color, emmisive_color * 1.75 * correct_light * vec3(1.0, 0.5, 1.0), match_1_lba * factor_lba);
         emmisive_color -= mix(vec3(0.0), v3_luma(candle_color * 0.8) * correct_light, match_2_lba * factor_lba);
         emmisive_color -= mix(vec3(0.0), (candle_color * 0.5) - v3_luma(candle_color * 0.5) * correct_light, match_3_lba * factor_lba);
         

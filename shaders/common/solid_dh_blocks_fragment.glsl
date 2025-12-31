@@ -15,6 +15,8 @@ uniform float dhFarPlane;
 uniform float far;
 uniform vec3 cameraPosition;
 uniform int dhRenderDistance;
+uniform float viewWidth;
+uniform float viewHeight;
 
 /* Ins / Outs */
 
@@ -32,6 +34,9 @@ varying float fog_adj;
 #include "/lib/luma.glsl"
 #include "/lib/dither.glsl"
 
+#define FRAGMENT
+#include "/lib/downscale.glsl"
+
 vec3 computeRealLightDH(vec3 omni, vec3 directColor, float directStrength, float shadow, vec3 candle, float rain) {
     return omni + vec3(shadow) * directColor * directStrength * (1.0 - (rain * 0.75)) + candle;
 }
@@ -39,6 +44,7 @@ vec3 computeRealLightDH(vec3 omni, vec3 directColor, float directStrength, float
 // MAIN FUNCTION ------------------
 
 void main() {
+    if(fragment_cull()) discard;
     #if AA_TYPE > 0 
         float dither = shifted_dither13(gl_FragCoord.xy);
     #else
@@ -69,7 +75,7 @@ void main() {
 
     float shadow_c = abs((light_mix * 2.0) - 1.0);
 
-    vec3 real_light = computeRealLightDH(omni_light * 1.25, direct_light_color, direct_light_strength, shadow_c, final_candle_color, rainStrength);
+    vec3 real_light = computeRealLightDH(omni_light * 1.25, direct_light_color, direct_light_strength * 1.1, shadow_c, final_candle_color, rainStrength);
 
     block_color.rgb *= mix(real_light, vec3(1.0), nightVision * 0.125);
     block_color.rgb *= mix(vec3(1.0, 1.0, 1.0), vec3(NV_COLOR_R, NV_COLOR_G, NV_COLOR_B), nightVision);

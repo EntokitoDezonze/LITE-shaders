@@ -2,12 +2,12 @@
 vec3 mid_sky_color_rgb = day_blend(
         saturate(MID_SUNSET_COLOR, day_blend_float_lgcy(1.0, 1.0, 0.333)) * day_blend(vec3(1.0), vec3(1.0), vec3(1.6, 1.6, 1.5) * 1.25),
         MID_DAY_COLOR,
-        saturate(MID_NIGHT_COLOR, day_blend_float(1.0, 1.0, 0.5)) * day_blend_float(1.0, 1.0, 1.25)
+        saturate(MID_NIGHT_COLOR, day_blend_float(1.0, 1.0, 0.0)) * day_blend_float(1.0, 1.0, 1.25)
     );
 
     mid_sky_color_rgb = mix(
         mid_sky_color_rgb,
-        HORIZON_SKY_RAIN_COLOR * luma(mid_sky_color_rgb * day_blend_float(1.0, 1.0, 1.5)),
+        HORIZON_SKY_RAIN_COLOR * luma(mid_sky_color_rgb * day_blend_float(1.0, 1.0, 0.75)),
         rainStrength
     );
 

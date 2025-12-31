@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.7.3 - dh_water.vsh
+/* MakeUp - LITE shaders 4.8 - dh_water.vsh
 Render: DH Water
 
 Javier Garduño - GNU Lesser General Public License v3.0

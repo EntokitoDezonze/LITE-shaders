@@ -33,7 +33,7 @@ float illuminationx_15 = illuminationx_8 * illuminationx_4 * illuminationx_2 * i
 #if COLOR_SCHEME == 12
     candle_color = CANDLE_BASELIGHT * (illumination.x + illuminationx_8);
 #else
-    candle_color = CANDLE_BASELIGHT * (illumination.x * sqrt(illumination.x) + illuminationx_15);
+    candle_color = CANDLE_BASELIGHT * (illuminationx_2 + illuminationx_15);
 #endif
 
 #ifdef DYN_HAND_LIGHT
@@ -90,8 +90,8 @@ float omni_strength = (direct_light_strength * .125) + 1.0;
     direct_light_color = texture2D(lightmap, vec2(0.0, lmcoord.y)).rgb * day_blend_lgcy(LIGHT_SUNSET_COLOR, LIGHT_DAY_COLOR, LIGHT_NIGHT_COLOR * 1.5);
 #else
     direct_light_color = day_blend_lgcy(
-    LIGHT_SUNSET_COLOR * day_blend_lgcy(vec3(1.0), vec3(1.0, 1.0, 1.5), vec3(0.25)),  
-    LIGHT_DAY_COLOR * day_blend_lgcy(vec3(1.0, 1.0, 1.5), vec3(1.25), vec3(1.0)), 
+    LIGHT_SUNSET_COLOR * day_blend_lgcy(vec3(1.0), vec3(1.0, 1.0, 1.25), vec3(0.25)),  
+    LIGHT_DAY_COLOR * day_blend_lgcy(vec3(1.0, 1.0, 1.25), vec3(1.25), vec3(1.0)), 
     LIGHT_NIGHT_COLOR * day_blend_float_lgcy(0.25, 1.0, 1.0));
 
     #if COLOR_SCHEME == 11
@@ -140,9 +140,15 @@ float vis_sky_8 = vis_sky_4 * vis_sky_4;
 #elif defined NETHER
     omni_light = LIGHT_DAY_COLOR * 2.0;
 #else
+    #if COLOR_SCHEME == 11
+        float rain_mul = day_blend_float(0.5, 0.4, 0.4);
+    #else
+        float rain_mul = day_blend_float(0.4, 0.2, 0.333);
+    #endif
+    
     direct_light_color = mix(
         direct_light_color,
-        ZENITH_SKY_RAIN_COLOR * luma(direct_light_color) * day_blend_float(0.4, 0.2, 1.5),
+        ZENITH_SKY_RAIN_COLOR * luma(direct_light_color) * rain_mul,
         rainStrength
     );
 
@@ -158,11 +164,11 @@ float vis_sky_8 = vis_sky_4 * vis_sky_4;
     float omni_color_luma = luma(omni_color);
     
     #if defined SIMPLE_AUTOEXP && COLOR_SCHEME != 11
-        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, day_blend_float(0.7, 0.4, 0.0), 1.0);    
+        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, day_blend_float(0.7, 0.4, 0.0) / 4 * AVOID_DARK_LEVEL, 10.0);    
     #elif defined SIMPLE_AUTOEXP && COLOR_SCHEME == 11
-        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, day_blend_float(0.4, 0.45, 0.6), 1.0);
+        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, day_blend_float(0.4, 0.45, 0.6) / 4 * AVOID_DARK_LEVEL, 10.0);
     #else
-        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, 0.125, 1.0);
+        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, 0.03125 * AVOID_DARK_LEVEL, 10.0);
     #endif
     
     vec3 omni_color_min = omni_color * luma_ratio;

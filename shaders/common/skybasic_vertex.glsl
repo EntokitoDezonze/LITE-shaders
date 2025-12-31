@@ -19,7 +19,10 @@
 uniform mat4 gbufferModelView;
 uniform mat4 gbufferModelViewInverse;
 uniform mat4 gbufferProjectionInverse;
-
+uniform float viewWidth; 
+uniform float viewHeight; 
+uniform int frameCounter;
+uniform float frameTime;
 
 #if MC_VERSION < 11604
     uniform float wetness;
@@ -52,26 +55,28 @@ varying vec4 position;
 #if MC_VERSION < 11604
     #include "/lib/luma.glsl"
 #endif
+#include "/lib/downscale.glsl"
 
 // MAIN FUNCTION ------------------
 
 void main() {
     texcoord = (gl_TextureMatrix[0] * gl_MultiTexCoord0).xy;
     gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+    resize_vertex(gl_Position);
 
     #if AA_TYPE > 0
         gl_Position.xy += taa_offset * gl_Position.w;
     #endif
 
     #if !defined THE_END
-    float color_distance = length(gl_Color.rgb - skyColor);
+        float color_distance = dot(gl_Color.rgb - skyColor, gl_Color.rgb - skyColor);
 
-    star_data = vec4(
-        float(gl_Color.r == gl_Color.g &&
-        gl_Color.g == gl_Color.b &&
-        gl_Color.r > 0.0 &&
-        color_distance > 0.001) * gl_Color.r // <- Verifying color distance is much faster than a mix with texture2D. Discards gray skies.
-    );
+        star_data = vec4(
+            float(gl_Color.r == gl_Color.g &&
+            gl_Color.g == gl_Color.b &&
+            gl_Color.r > 0.0 &&
+            color_distance > 0.0) * gl_Color.r // <- Verifying color distance is much faster than a mix with texture2D. Discards gray skies.
+        );
     #else
         star_data = vec4(0.0);
     #endif

@@ -13,6 +13,8 @@
 /* Uniforms */
 
 uniform sampler2D tex;
+uniform float viewWidth;
+uniform float viewHeight;
 uniform float pixel_size_x;
 uniform float pixel_size_y;
 uniform float near;
@@ -27,6 +29,7 @@ uniform float frameTimeCounter;
 uniform int isEyeInWater;
 uniform vec3 sunPosition;
 uniform vec3 moonPosition;
+uniform float sunAngle;
 uniform int worldTime;
 uniform float nightVision;
 uniform float rainStrength;
@@ -37,6 +40,7 @@ uniform sampler2D gaux4;
 uniform float alphaTestRef;
 uniform vec4 lightningBoltPosition;
 uniform float frameTime;
+uniform mat4 gbufferModelViewInverse;
 
 #if defined DISTANT_HORIZONS
     uniform float dhNearPlane;
@@ -62,7 +66,6 @@ uniform float frameTime;
 
 #if defined CLOUD_REFLECTION && (V_CLOUDS > 0 && !defined UNKNOWN_DIM) && !defined NETHER
     uniform vec3 cameraPosition;
-    uniform mat4 gbufferModelViewInverse;
 #endif
 
 uniform float blindness;
@@ -96,6 +99,7 @@ varying vec3 low_sky_color;
 varying vec3 pure_hi_sky_color;
 varying vec3 pure_mid_sky_color;
 varying vec3 pure_low_sky_color;
+uniform int frameCounter;
 
 vec4 fragpos = gbufferProjectionInverse * (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y), gl_FragCoord.z, 1.0) * 2.0 - 1.0);
 vec3 nfragpos = normalize(fragpos.xyz);
@@ -132,9 +136,13 @@ vec3 nfragpos = normalize(fragpos.xyz);
     #include "/lib/volumetric_clouds.glsl"
 #endif
 
+#define FRAGMENT
+#include "/lib/downscale.glsl"
+
 // MAIN FUNCTION ------------------
 
 void main() {
+    if(fragment_cull()) discard;
     vec2 eye_bright_smooth = vec2(eyeBrightnessSmooth);
 
     #if SHADOW_TYPE == 1 || defined DISTANT_HORIZONS || (defined CLOUD_REFLECTION && (V_CLOUDS > 0 && !defined UNKNOWN_DIM) && !defined NETHER) || SSR_TYPE > 0
@@ -270,7 +278,13 @@ void main() {
         block_color.rgb *= mix(real_light, vec3(1.0), nightVision * .125);
 
         if(block_type > 1.5) {  // Glass
-            block_color = cristal_shader(fragposition, water_normal, saturate_v4(block_color, 3.0), sky_color_reflect, fresnel, visible_sky, dither, direct_light_color);
+            float sat;
+            if(block_type > 2.1 && block_type < 2.3){
+                sat = 0.5;
+            } else {
+                sat = 3.0;
+            }
+            block_color = cristal_shader(fragposition, water_normal, saturate_v4(block_color, sat), sky_color_reflect, fresnel, visible_sky, dither, direct_light_color);
             if (block_color.a < alphaTestRef) discard;
         }
     }

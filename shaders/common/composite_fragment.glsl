@@ -23,12 +23,15 @@ uniform sampler2D depthtex0;
 uniform int isEyeInWater;
 uniform ivec2 eyeBrightnessSmooth;
 uniform float frameTime;
+uniform float viewWidth;
+uniform float viewHeight;
+uniform int frameCounter;
 
 #if MC_VERSION >= 11900
     uniform float darknessFactor;
 #endif
 
-#if VOL_LIGHT == 1 && !defined NETHER
+#if (VOL_LIGHT == 2 && defined FSR) || VOL_LIGHT == 1 && !defined NETHER
     uniform sampler2D depthtex1;
     uniform vec3 sunPosition;
     uniform vec3 moonPosition;
@@ -39,7 +42,7 @@ uniform float frameTime;
     uniform float vol_mixer;
 #endif
 
-#if VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER
+#if VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER && !defined FSR
     uniform float light_mix;
     uniform mat4 gbufferProjectionInverse;
     uniform mat4 gbufferModelViewInverse;
@@ -63,13 +66,13 @@ varying vec3 direct_light_color;
 varying vec3 direct_light_strength;
 varying float exposure;
 
-#if VOL_LIGHT == 1 && !defined NETHER
+#if (VOL_LIGHT == 2 && defined FSR) || VOL_LIGHT == 1 && !defined NETHER
     varying vec3 vol_light_color;
     varying vec2 lightpos;
     varying vec3 astro_pos;
 #endif
 
-#if VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER
+#if VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER && !defined FSR
     varying vec3 vol_light_color;
 #endif
 
@@ -87,12 +90,15 @@ varying float exposure;
     #include "/lib/luma.glsl"
 #endif
 
-#if VOL_LIGHT == 1 && !defined NETHER
+#define FRAGMENT
+#include "/lib/downscale.glsl"
+
+#if (VOL_LIGHT == 1 || (VOL_LIGHT == 2 && defined FSR)) && !defined NETHER
     #include "/lib/dither.glsl"
     #include "/lib/volumetric_light.glsl"
 #endif
 
-#if VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER
+#if VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER && !defined FSR
     #include "/lib/dither.glsl"
     #include "/lib/volumetric_light.glsl"
 #endif
@@ -143,7 +149,7 @@ void main() {
         }
     #endif
 
-    #if (VOL_LIGHT == 1 && !defined NETHER) || (VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER)
+    #if (VOL_LIGHT == 1 && !defined NETHER) || (VOL_LIGHT == 2 && !defined NETHER)
         #if AA_TYPE > 0
             float dither = shifted_eclectic_r_dither(gl_FragCoord.xy);
         #else
@@ -151,7 +157,7 @@ void main() {
         #endif
     #endif
 
-    #if VOL_LIGHT == 1 && !defined NETHER
+    #if (VOL_LIGHT == 1 || (VOL_LIGHT == 2 && defined FSR)) && !defined NETHER
         #if defined THE_END
             #if MC_VERSION < 11604
                 float vol_light = 0.0;
@@ -165,7 +171,7 @@ void main() {
         vec4 center_world_pos = modeli_times_projectioni * (vec4(0.5, 0.5, 1.0, 1.0) * 2.0 - 1.0);
         vec3 center_view_vector = normalize(center_world_pos.xyz);
 
-        vec4 world_pos = modeli_times_projectioni * (vec4(texcoord, 1.0, 1.0) * 2.0 - 1.0);
+        vec4 world_pos = modeli_times_projectioni * (vec4(texcoord / RENDER_SCALE, 1.0, 1.0) * 2.0 - 1.0);
         vec3 view_vector = normalize(world_pos.xyz);
 
         #if defined THE_END
@@ -195,7 +201,7 @@ void main() {
         #endif
     #endif
 
-    #if VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER
+    #if VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER && !defined FSR
         #if defined COLORED_SHADOW
             vec3 vol_light = get_volumetric_color_light(dither, screen_distance, modeli_times_projectioni);
         #else
@@ -226,7 +232,7 @@ void main() {
                 mix(block_color.rgb, vol_light_color * vol_light, vol_intensity * (vol_light * 0.5 + 0.5) * (1.0 - rainStrength));
         #endif
     #endif
-
+    
     // Dentro de la nieve
     #ifdef BLOOM
         if(isEyeInWater == 3) {
@@ -242,8 +248,12 @@ void main() {
 
     #ifdef BLOOM
         // Bloom source
-        float bloom_luma = smoothstep(0.85, 1.0, luma(block_color.rgb * exposure)) * 0.5;
-
+        float bloom_luma;
+        if(fragment_cull()){
+            bloom_luma = 0.0;
+        } else {
+            bloom_luma = smoothstep(0.85, 1.0, luma(block_color.rgb * exposure)) * 0.5;
+        }
         block_color = clamp(block_color, vec4(0.0), vec4(vec3(50.0), 1.0));     
         /* DRAWBUFFERS:146 */
         gl_FragData[0] = block_color;

@@ -22,6 +22,8 @@ uniform float blindness;
 uniform float rainStrength;
 uniform float wetness;
 uniform sampler2D gaux3;
+uniform float viewWidth;
+uniform float viewHeight;
 
 #if V_CLOUDS > 0
     uniform sampler2D gaux2;
@@ -42,8 +44,6 @@ uniform sampler2D gaux3;
     uniform sampler2D dhDepthTex0;
     uniform float dhNearPlane;
     uniform float dhFarPlane;
-    uniform float viewWidth;
-    uniform float viewHeight;
 #endif
 
 uniform mat4 gbufferModelViewInverse;
@@ -57,7 +57,6 @@ uniform float frameTime;
     uniform float frameTimeCounter;
     uniform int frameCounter;
 #endif
-
 /* Ins / Outs */
 
 varying vec2 texcoord;
@@ -106,11 +105,15 @@ varying vec3 direct_light_strength;
     #endif
 #endif
 
+#define FRAGMENT
+#include "/lib/downscale.glsl"
+
 // MAIN FUNCTION ------------------
 
 void main() {
-    vec4 block_color = texture2DLod(colortex1, texcoord, 0);
-    float d = texture2DLod(depthtex0, texcoord, 0).r;
+    if(fragment_cull()) discard;
+    vec4 block_color = texture2DLod(colortex1, texcoord * RENDER_SCALE, 0);
+    float d = texture2DLod(depthtex0, texcoord * RENDER_SCALE, 0).r;
     float linear_d = ld(d);
 
     vec2 eye_bright_smooth = vec2(eyeBrightnessSmooth);

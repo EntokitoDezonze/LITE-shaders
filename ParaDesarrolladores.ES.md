@@ -97,9 +97,9 @@ El resultado se escribirá en:
 "Preparar el bloom", significa guardar una versión de la escena actual con el nivel de exposición aplicado, en: gaux1.
 Se guarda también el valor calculado de la autoexposición en: gaux3. 
 
-7. En Composite1 se calcula el DOF, y se aplica el Bloom. Para aplicar el Bloom se lee un nivel de mipmap del buffer gaux3 calculado en el paso anterior. El resutado se escribe en: colortex1
+7. En Composite1 se calcula el DOF, el motion blur, y se aplica el Bloom. Para aplicar el Bloom se lee un nivel de mipmap del buffer gaux3 calculado en el paso anterior. El resutado se escribe en: colortex1
 
-8. En Composite2 se calcula el AA y el motion blur. El resultado se escribe en: colortex0. Si el supermuestreo temporal está activo, se escribe el histórico en colortex3.
+8. En Composite2 se calcula el AA. El resultado se escribe en: colortex0. Si el supermuestreo temporal está activo, se escribe el histórico en colortex3.
 
 9. En Final, se aplican efectos de postprocesado, como aberración cromática, la autoexposición, el mapa de tonos, y ayudas para ceguera al color.
 Para terminar, la imagen es enviada a la pantalla. 

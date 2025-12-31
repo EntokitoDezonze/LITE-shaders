@@ -18,7 +18,7 @@
         #else
         fog_adj = pow(
             clamp(gl_FogFragCoord / dhRenderDistance, 0.0, 1.0) * fog_intensity_coeff,
-            mix(fog_density_coeff * biome_fog, fog_density_coeff * 0.2 * biome_fog, rainStrength)
+            mix(fog_density_coeff * biome_fog * 0.3, fog_density_coeff * 0.2 * biome_fog, rainStrength)
         );
         #endif
     #else

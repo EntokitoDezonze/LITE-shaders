@@ -19,6 +19,7 @@ uniform float viewWidth;
 uniform float viewHeight;
 uniform vec4 lightningBoltPosition;
 uniform float frameTime;
+uniform int frameCounter;
 
 /* Ins / Outs */
 
@@ -43,12 +44,14 @@ varying vec3 direct_light_strength;
 #include "/lib/luma.glsl"
 #include "/lib/oscilator_utils.glsl"
 #include "/lib/biome_sky.glsl"
+#include "/lib/downscale.glsl"
 
 // MAIN FUNCTION ------------------
 
 void main() {
     gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
     texcoord = gl_MultiTexCoord0.xy;
+    resize_vertex(gl_Position);
 
     up_vec = normalize(gbufferModelView[1].xyz);
 

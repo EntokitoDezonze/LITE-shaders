@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.7.3 - gbuffers_spidereyes.vsh
+/* MakeUp - LITE shaders 4.8 - gbuffers_spidereyes.vsh
 Render: Some creatures eyes (like spider)
 
 Javier Garduño - GNU Lesser General Public License v3.0

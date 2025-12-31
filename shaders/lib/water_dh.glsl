@@ -1,17 +1,51 @@
-/* MakeUp - LITE shaders 4.7.3 - water_dh.glsl
+/* MakeUp - LITE shaders 4.8 - water_dh.glsl
 Water reflection and refraction related functions (dh).
 */
 
-#if SUN_REFLECTION == 1
+#if SUN_REFLECTION > 0
     #if !defined NETHER && !defined THE_END
         float sun_reflection(vec3 fragpos, float smoothstep1) {
+            vec3 nfragPos = normalize(fragpos);
             vec3 astro_pos = worldTime > 13200 ? moonPosition : sunPosition;
-            float astro_vector =
-                max(dot(normalize(fragpos), normalize(astro_pos)), 0.0);
+            vec3 nastroPos = normalize(astro_pos);
+
+            float reflection = 0.0;
+
+            #if  SUN_REFLECTION == 2
+                vec3 forward = normalize(mat3(gbufferModelViewInverse) * nastroPos);
+                vec3 nFragWorld = normalize(mat3(gbufferModelViewInverse) * nfragPos);
+
+                vec3 worldRef = vec3(0.0, 1.0, 0.0);
+                if (abs(dot(forward, worldRef)) > 0.99) worldRef = vec3(0.0, 0.0, 1.0);
+
+                vec3 rightBase = normalize(cross(worldRef, forward));
+                vec3 upBase = cross(forward, rightBase);
+
+                float rawX = dot(nFragWorld, rightBase);
+                float rawY = dot(nFragWorld, upBase);
+
+                float angle = sunPathRotation * 0.01745329; 
+                float s = sin(angle);
+                float c = cos(angle);
+                
+                // Rotation
+                float dotX = rawX * c - rawY * s;
+                float dotY = rawX * s + rawY * c;
+                
+                float square_shape = max(abs(dotX), abs(dotY));
+                float size = 1.08 - smoothstep1;
+                float frontal_mask = step(0.0, dot(nFragWorld, forward));
+                
+                reflection = smoothstep(size + 0.01, size, square_shape) * frontal_mask;
+            #else
+                float astro_vector = max(dot(nfragPos, nastroPos), 0.0);
+                reflection = smoothstep(smoothstep1, 1.0, astro_vector);
+            #endif
+
             return clamp(
-                smoothstep(smoothstep1, 1.0, astro_vector) *
+                (reflection - 0.165) *
                 clamp(lmcoord.y, 0.0, 1.0) *
-                (1.0 - rainStrength) * day_blend_float(10.0, 10.0, 5.0) - 0.165, 0.0, 100.0);
+                (1.0 - rainStrength) * day_blend_float(10.0, 10.0, 5.0), 0.0, 100.0);
         }
     #endif
 #endif
@@ -78,15 +112,17 @@ vec3 get_normals(vec3 bump, vec3 fragpos) {
 
 vec4 reflection_calc_dh(vec3 fragpos, vec3 normal, vec3 reflected, vec3 infinite_color, float dither) {
     vec3 pos = camera_to_screen(fragpos + reflected * 768.0);
+    float pos_y_normalized = pos.y / RENDER_SCALE;
 
     float border =
-        clamp((1.0 - (max(0.0, abs(pos.y - 0.5)) * 2.0)) * 50.0, 0.0, 1.0);
+        clamp((1.0 - (max(0.0, abs(pos_y_normalized - 0.5)) * 2.0)) * 50.0, 0.0, 1.0);
 
     border = clamp(border - pow(pos.y, 10.0), 0.0, 1.0);
 
     pos.x = abs(pos.x);
-    if (pos.x > 1.0) {
-        pos.x = 1.0 - (pos.x - 1.0);
+
+    if (pos.x > RENDER_SCALE) {
+        pos.x = RENDER_SCALE - (pos.x - RENDER_SCALE);
     }
 
     vec4 final_reflex;
@@ -127,11 +163,11 @@ vec3 water_shader_dh(
         fresnel *= 0.8;
     #endif
 
-    #if SUN_REFLECTION == 1
+    #if SUN_REFLECTION > 0
         #ifndef NETHER
             #ifndef THE_END
                 return mix(color, reflection.rgb, fresnel * REFLEX_INDEX) +
-                    vec3(sun_reflection(reflect(normalize(fragpos), normal), 0.998)) * light_color * infinite * visible_sky;          
+                    vec3(sun_reflection(reflect(normalize(fragpos), normal), 0.999)) * light_color * infinite * visible_sky * day_blend(vec3(1.0, 1.0, 0.15), vec3(1.0, 1.0, 0.15), vec3(1.0));       
             #else
                 return mix(color, reflection.rgb, fresnel * REFLEX_INDEX);
             #endif

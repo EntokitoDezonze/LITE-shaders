@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.7.3 - basic_utils.glsl
+/* MakeUp - LITE shaders 4.8 - basic_utils.glsl
 Misc utilities.
 
 Javier Garduño - GNU Lesser General Public License v3.0

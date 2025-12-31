@@ -18,13 +18,14 @@ uniform float pixel_size_x;
 uniform float pixel_size_y;
 uniform float rainStrength;
 uniform mat4 gbufferProjectionInverse;
-
+uniform float viewWidth;
+uniform float viewHeight;
+uniform int frameCounter;
+uniform float frameTime;
 #if STAR_SLIDER == 2 || defined THE_END
     uniform float frameTimeCounter;
     uniform vec3 cameraPosition;
     uniform mat4 gbufferModelViewInverse;
-    uniform float viewWidth;
-    uniform float viewHeight;
     uniform float sunAngle;
 #endif
 
@@ -62,10 +63,13 @@ varying vec4 position;
 #endif
 
 #include "/lib/biome_sky.glsl"
+#define FRAGMENT
+#include "/lib/downscale.glsl"
 
 // MAIN FUNCTION ------------------
 
 void main() {
+    if(fragment_cull()) discard;
     #if (STAR_SLIDER == 2 || defined THE_END) && !defined NETHER
         vec4 star_color = vec4(stars(), 1.0);
     #endif

@@ -6,7 +6,7 @@
     vec3 low_sky_color_rgb = day_blend(
             HORIZON_SUNSET_COLOR * day_blend(vec3(1.0), vec3(1.0, 1.5, 1.0), vec3(1.75)),
             HORIZON_DAY_COLOR,
-            HORIZON_NIGHT_COLOR
+            saturate(HORIZON_NIGHT_COLOR, 0.25)
         );
 
         low_sky_color_rgb = mix(

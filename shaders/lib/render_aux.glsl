@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.7.3 - render_aux.glsl
+LITE shaders 4.8 - render_aux.glsl
 Render auxiliary calculations. - Cálculos auxiliares de renderização.
 */
 
@@ -20,6 +20,7 @@ float noise2D_grid(vec2 p) {
     return hash21(i);
 }
 
+/*
 float noise2D_grid_inclined(vec2 p) {
     float shear_factor = 0.5; 
     vec2 p_inclined = vec2(p.x + p.y * shear_factor, p.y);
@@ -27,9 +28,10 @@ float noise2D_grid_inclined(vec2 p) {
     
     return hash21(i);
 }
+Uncomment when needed. */
 
 vec3 reconstructWorldPosition(float depth, vec2 resolution) {
-    vec2 ndc_xy = (gl_FragCoord.xy / resolution) * 2.0 - 1.0;
+    vec2 ndc_xy = (gl_FragCoord.xy / RENDER_SCALE / resolution) * 2.0 - 1.0;
     vec4 frag_clip_space = vec4(ndc_xy, depth, 1.0);
     vec4 frag_view_space = gbufferProjectionInverse * frag_clip_space;
     frag_view_space /= frag_view_space.w; 

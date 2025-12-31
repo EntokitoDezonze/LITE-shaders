@@ -1,10 +1,11 @@
-/* MakeUp - LITE shaders 4.7.3 - config.glsl
+/* MakeUp - LITE shaders 4.8 - config.glsl
 Config variables (DO NOT DELETE ANY #define)
 
 Javier Garduño - GNU Lesser General Public License v3.0
 */
 
 #extension GL_EXT_gpu_shader4 : enable
+#extension GL_ARB_gpu_shader5 : enable
 
 // Useful material properties.
 
@@ -28,6 +29,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 // Reflection
 #define ENTITY_WATER        10008.0  // Water
 #define ENTITY_STAINED      10079.0  // Glass
+#define ENTITY_GLASS_WHITE  10080.0  // White glass
 #define ENTITY_ICE          10078.0  // Ice
 
 // Glossy
@@ -98,10 +100,12 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define AOSTEPS 2.0 // [2.0 3.0 4.0 5.0 6.0 7.0 8.0 10.0] How many samples are taken for AO (High performance cost, Vanilla AO does not use it).
 #define AO_STRENGTH 1.0 // [0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.66 0.70 0.75 0.80 0.85 0.90 0.95 1.0 1.05 1.10 1.15 1.20 1.25 1.30 1.35 1.40 1.45 1.50 1.55 1.60 1.65 1.70 1.75 1.80 1.85 1.90 1.95 2.0] Ambient occlusion strength (strength NOT affect performance).
 #define AA_TYPE 3 // [0 1 2 3]  No: Disable antialiasing (not recommended). Denoise only: Supersampling is only used to eliminate noise. TAA: Enable antialiasing (Recommended). Sharp TAA: A subtle sharpening effect is used on the TAA. (Low-Medium perfomance cost)
+//#define FXAA // Enables FXAA, very helpful especially on low resolutions.
+//#define FSR // Enables FSR 1.0 for upscaling.
 #define MOTION_BLUR // Turn on motion blur (Low perfomance cost)
 #define MOTION_BLUR_STRENGTH 0.75 // [0.5 0.75 1.0 1.5 2.0 2.5 3.0 3.5 4.0] Set Motion blur strength. Lower framerate -> Lower strength and vice versa is recommended.
 #define MOTION_BLUR_SAMPLES 4.0 // [2.0 3.0 4.0 5.0 6.0 7.0 8.0] Motion blur samples 
-#define SUN_REFLECTION 1 // [0 1] Enable sun (or moon) reflection on water and glass (Very low perfomance cost)
+#define SUN_REFLECTION 2 // [0 1 2] Enable sun (or moon) reflection on water and glass (Very low perfomance cost)
 
 #define SHADOW_TYPE 1 // [0 1] Sets the shadow type
 #define SHADOW_BLUR 3.0 // [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 4.0]  Shadow blur intensity
@@ -127,6 +131,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 
 #define AVOID_DARK_LEVEL 4.0 // [0.0 0.5 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0 5.5 6.0 6.5 7.0 7.5 8.0 8.5 9.0 9.5 10.0 10.5 11.0 11.5 12.0 12.5 50.0]  Minimal light intensity (Percentage).
 #define NIGHT_BRIGHT 0.60 // [0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75] Adjusts the brightness of the night light in exteriors.
+#define NIGHT_BRIGHT_RANGE 0.60 // [0.10 0.20 0.30 0.40 0.50 0.60 0.70 0.80 0.90 1.00 1.10 1.20] Difference between min and max values.
 #define V_CLOUDS 1 // [-1 0 1 2] Volumetric static: The clouds move, but they keep their shape. Volumetric dynamic: Clouds change shape over time, a different cloud landscape every time (medium performance hit). Vanilla: Original vanilla clouds.
 #define CIRRUS // Adds a 2nd layer of cirrus clouds in the sky.
 #define USE_CLOUD_VOL_STYLE -1 // [-1 0 1] Set the volumetric cloud style.
@@ -228,13 +233,37 @@ Javier Garduño - GNU Lesser General Public License v3.0
   #define PIXEL_SIZE ((viewHeight + viewWidth) / 750) // <- ALWAYS WILL HAVE PRORPOTIONAL PIXEL SIZE
 #endif
 
-// Information Utils LITE shaders LT473
+// Information Utils LITE shaders LT48
 #define HOVER 0 // [0]
 #define VERSION 0 // [0]
 #define PROFILES 0 // [0]
 #define STYLES 0 // [0]
 #define PERF_IMPACT 0 // [0]
 #define CREDITS 0 // [0]
+
+#define RENDER_SCALE_INT 85 // [50 58 67 76 85]
+
+#if RENDER_SCALE_INT == 85
+  #define RENDER_SCALE 0.85
+#elif RENDER_SCALE_INT == 76
+  #define RENDER_SCALE 0.76
+#elif RENDER_SCALE_INT == 67
+  #define RENDER_SCALE 0.67
+#elif RENDER_SCALE_INT == 58
+  #define RENDER_SCALE 0.58
+#elif RENDER_SCALE_INT == 50
+  #define RENDER_SCALE 0.50
+#endif
+
+#ifndef FSR
+  #undef RENDER_SCALE
+  #define RENDER_SCALE 1.0
+#endif
+
+#ifdef PS1_LIKE
+  #undef RENDER_SCALE
+  #define RENDER_SCALE 0.50
+#endif
 
 // Custom colors
 #define LIGHT_SUNSET_COLOR_R 1 // [0.0 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1 0.11 0.12 0.13 0.14 0.15 0.16 0.17 0.18 0.19 0.2 0.21 0.22 0.23 0.24 0.25 0.26 0.27 0.28 0.29 0.3 0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.4 0.41 0.42 0.43 0.44 0.45 0.46 0.47 0.48 0.49 0.5 0.51 0.52 0.53 0.54 0.55 0.56 0.57 0.58 0.59 0.6 0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68 0.69 0.7 0.71 0.72 0.73 0.74 0.75 0.76 0.77 0.78 0.79 0.8 0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88 0.89 0.9 0.91 0.92 0.93 0.94 0.95 0.96 0.97 0.98 0.99 1.0 1.01 1.02 1.03 1.04 1.05 1.06 1.07 1.08 1.09 1.1 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.2 1.21 1.22 1.23 1.24 1.25 1.26 1.27 1.28 1.29 1.3 1.31 1.32 1.33 1.34 1.35 1.36 1.37 1.38 1.39 1.4 1.41 1.42 1.43 1.44 1.45 1.46 1.47 1.48 1.49 1.5]
@@ -312,6 +341,10 @@ Javier Garduño - GNU Lesser General Public License v3.0
   // Don't remove
 #endif
 
+#ifdef FXAA
+  // Don't remove
+#endif
+
 #ifdef SIMPLE_AUTOEXP
   // Don't remove
 #endif
@@ -359,7 +392,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define CLOUD_PLANE 219.0
   #else
     #define CLOUD_PLANE_SUP 330.0
-    #define CLOUD_PLANE 269.0
+    #define CLOUD_PLANE 270.0
     #define CLOUD_PLANE_CENTER (CLOUD_PLANE_SUP + CLOUD_PLANE) / 2
     
   #endif
@@ -470,33 +503,33 @@ const float sunPathRotation = -40.0; // [-80.0 -75.0 -70.0 -65.0 -60.0 -55.0 -50
       #define SHADOW_LIMIT 128.0
   #endif
 
-  // Shadow quality
-  #if SHADOW_QTY_SLIDER == 1 // Very low
+  // Quality
+  #if SHADOW_QTY_SLIDER == 1
     const int shadowMapResolution = 512;
     #define SHADOW_FIX_FACTOR 0.3
     #define SHADOW_DIST 0.75
-  #elif SHADOW_QTY_SLIDER == 2 // Low
+  #elif SHADOW_QTY_SLIDER == 2
     const int shadowMapResolution = 768;
     #define SHADOW_FIX_FACTOR 0.25
     #define SHADOW_DIST 0.8
-  #elif SHADOW_QTY_SLIDER == 3 // Medium
+  #elif SHADOW_QTY_SLIDER == 3
     const int shadowMapResolution = 1024;
     #define SHADOW_FIX_FACTOR 0.2
     #define SHADOW_DIST 0.85
-  #elif SHADOW_QTY_SLIDER == 4 // High
+  #elif SHADOW_QTY_SLIDER == 4
     const int shadowMapResolution = 1536;
     #define SHADOW_FIX_FACTOR 0.15
     #define SHADOW_DIST 0.865
-  #elif SHADOW_QTY_SLIDER == 5 // Extreme
+  #elif SHADOW_QTY_SLIDER == 5
     const int shadowMapResolution = 2304;
-    #define SHADOW_FIX_FACTOR 0.1
+    #define SHADOW_FIX_FACTOR 0.10
     #define SHADOW_DIST 0.88
-  #elif SHADOW_QTY_SLIDER == 6 // MAX
+  #elif SHADOW_QTY_SLIDER == 6
     const int shadowMapResolution = 3072;
     #define SHADOW_FIX_FACTOR 0.05
     #define SHADOW_DIST 0.9
   #endif
-
+  
   #if VOL_LIGHT == 2
     const float shadowDistanceRenderMul = 1.0;
   #else

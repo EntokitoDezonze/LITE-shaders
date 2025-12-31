@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.7.3 - tone_maps.glsl
+/* MakeUp - LITE shaders 4.8 - tone_maps.glsl
 Tonemap functions.
 
 Javier Garduño - GNU Lesser General Public License v3.0
