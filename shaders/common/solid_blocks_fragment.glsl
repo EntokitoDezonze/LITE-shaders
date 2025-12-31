@@ -15,6 +15,7 @@
 uniform float viewWidth;
 uniform float viewHeight;
 uniform int frameCounter;
+uniform float frameTime;
 uniform float far;
 uniform sampler2D tex;
 uniform int isEyeInWater;
@@ -27,6 +28,9 @@ uniform float pixel_size_y;
 uniform sampler2D gaux4;
 uniform mat4 gbufferProjectionInverse;
 uniform vec3 sunPosition;
+uniform sampler2D depthtex0;
+uniform float near;
+uniform mat4 gbufferProjectionMatrix;
 
 #if defined GBUFFER_BLOCK
     uniform float frameTimeCounter;
@@ -79,11 +83,15 @@ varying vec3 direct_light_color;
 varying vec3 candle_color;
 varying float direct_light_strength;
 varying vec3 omni_light;
-varying float ore_type_f;
-varying float emitter_type_f;
 varying float block_type_f;
 varying float exposure;
+varying float depth;
 varying vec4 position;
+
+#if defined EMMISIVE_MATERIAL || defined EMMISIVE_ORE
+    varying float ore_type_f;
+    varying float emitter_type_f;
+#endif
 
 #if defined GBUFFER_BLOCK
     varying vec3 worldPos;
@@ -129,8 +137,16 @@ varying vec4 position;
     #include "/lib/end_portal.glsl"
 #endif
 
-int ore_type = int(round(ore_type_f));
-int emitter_type = int(round(emitter_type_f));
+#include "/lib/lod.glsl"
+
+#define FRAGMENT
+#include "/lib/downscale.glsl"
+
+#if defined EMMISIVE_MATERIAL || defined EMMISIVE_ORE
+    int ore_type = int(round(ore_type_f));
+    int emitter_type = int(round(emitter_type_f));
+#endif
+
 int block_type = int(round(block_type_f));
 
 vec3 computeRealLight(vec3 omni, vec3 directColor, float directStrength, vec3 shadow, vec3 material, vec3 candle) {
@@ -139,12 +155,14 @@ vec3 computeRealLight(vec3 omni, vec3 directColor, float directStrength, vec3 sh
 }
 
 void main() {
-    vec4 fragpos = gbufferProjectionInverse * (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y), gl_FragCoord.z, 1.0) * 2.0 - 1.0);
+    if(fragment_cull()) discard;
+    vec4 fragpos = position;
     vec3 nfragpos = normalize(fragpos.xyz);
     float sun_influence = dot(nfragpos, sunPosition * 0.01);
     float final_sun_factor = pow(smoothstep(-1.0, 1.0, sun_influence), day_blend_float(1.0, 1.0, 1.75));
     float final_sun_factor2 = pow(smoothstep(-1.0, 1.0, sun_influence), day_blend_float(1.5, 0.0, 10.0));
 
+    float lod = get_lod();
     
     #if (defined SHADOW_CASTING && !defined NETHER) || defined DISTANT_HORIZONS
         #if AA_TYPE > 0 
@@ -171,7 +189,11 @@ void main() {
             discard;
         }
     #else
-        vec4 block_color = texture2D(tex, texcoord);
+        #if RENDER_SCALE_INT != 100 && defined FSR
+            vec4 block_color = texture2D(tex, texcoord,lod );
+        #else
+            vec4 block_color = texture2D(tex, texcoord);
+        #endif
     #endif
     
     vec4 pure_block_color = block_color;

@@ -3,6 +3,7 @@
 /* Uniforms */
 
 uniform mat4 gbufferProjectionInverse;
+uniform float frameTime;
 
 #if V_CLOUDS == 0 || defined UNKNOWN_DIM
     uniform float rainStrength;
@@ -30,6 +31,8 @@ uniform mat4 gbufferProjectionInverse;
     #include "/lib/luma.glsl"
 #endif
 
+#include "/lib/downscale.glsl"
+
 // MAIN FUNCTION ------------------
 
 void main() {
@@ -38,4 +41,5 @@ void main() {
         tint_color = gl_Color;
     #endif
     #include "/src/position_vertex.glsl"
+    resize_vertex(gl_Position);
 }

@@ -18,7 +18,7 @@ profile.comment=Os perfis “Sem sombras” são feitos para máquinas de baixo 
 #############################
 option.ACERCADE=§lLITE shaders
 option.ACERCADE.comment=Obrigado por utilizar este shader! :). Defina os controles de qualidade nativos do Iris ou OptiFine nos valores normais ou predefinidos para obter uma melhor qualidade. Tradução para Português e modificação por: @Entokito Dezonze
-value.ACERCADE.0=§5§l§oLT473
+value.ACERCADE.0=§5§l§oLT48
 
 #Style
 option.STYLE=§lEstilo
@@ -73,7 +73,7 @@ option.COLOR_BITS.comment=Ajusta quantos bits de cores podem ser mostrados na te
 
 
 option.FOLIAGE_V=§9▶§r Folhas realistas
-option.FOLIAGE_V.comment=Ativa a transparência de luz para folhas e plantas.
+option.FOLIAGE_V.comment=Ativa a transparência de luz e efeito do vento para folhas e plantas.
 
 option.SHADOW_DISTANCE_SLIDER=§a▶§r Dist. da sombra
 option.SHADOW_DISTANCE_SLIDER.comment=É recomendado que a distância da sombra seja pouco mais de 80% da distância de renderização, para a melhor relação desempenho / qualidade.
@@ -161,12 +161,28 @@ value.AOSTEPS.10.0=§5§l§oMAX
 
 option.AO_STRENGTH=Força da OA
 
-option.AA_TYPE=§b▶§r Antialiasing
-option.AA_TYPE.comment=Ativa o Antialiasing. Antiruído não tem antialiasing, mas tem anti-dithering. TAA Inteligente usa contraste adaptativo para aplicar a nitidez, Usar o TAA normal não é recomendado, pois a imagem pode parecer muito borrada.
+option.AA_TYPE=§b▶§r Anti-serrilhado
+option.AA_TYPE.comment=Ativa o Antialiasing. Antiruído não tem antialiasing, mas tem anti-dithering. §b§lTAA Inteligente§r usa contraste adaptativo para aplicar a nitidez. Usar o TAA normal não é recomendado, pois a imagem pode parecer muito borrada.
 value.AA_TYPE.0=Desligado
 value.AA_TYPE.1=Antiruído
 value.AA_TYPE.2=TAA §c§l(!)
 value.AA_TYPE.3=§b§lTAA Inteligente
+
+option.RENDER_SCALE_INT=Modo do §c§lFSR§r
+suffix.RENDER_SCALE_INT=%
+option.RENDER_SCALE_INT.comment=Ajusta a resoluçao que o shader é renderizado, pode melhorar a performance. §9§lUltra Performance§r é mais recomendado quando se joga em 4K. §c§l§oFSR 1§r irá fazer upscale da imagem.
+
+value.RENDER_SCALE_INT.100=§5§l§oNativo
+value.RENDER_SCALE_INT.85=§4§lUltra qualidade
+value.RENDER_SCALE_INT.76=§e§lQualidade
+value.RENDER_SCALE_INT.67=§a§lBalanceado
+value.RENDER_SCALE_INT.58=§b§lPerformance
+value.RENDER_SCALE_INT.50=§9§lUltra Performance
+
+screen.FSR_SCREEN=§c§lAMD FidelityFX
+option.FSR=§c§lFSR 1§r
+option.FSR.comment=Ativa §c§lAMD FSR 1§r, Melhora a qualidade da imagem quando a resolução é baixa. Ative esta opção antes de alterar o Modo do §c§lFSR§r
+option.FXAA.comment= Ativa FXAA, Muito útil em baixas resoluções. Essa opção só funcionará se §b§lTAA Inteligente§r estiver ativado.
 
 option.MOTION_BLUR=§b▶§r Desfoque de movimento
 option.MOTION_BLUR.comment=Ativa o desfoque de movimento.
@@ -208,8 +224,10 @@ value.SSR_TYPE.0=Flipped image
 value.SSR_TYPE.1=§a§lRaymarching§r
 
 option.SUN_REFLECTION=§b▶§r Reflexo do sol/lua
+option.SUN_REFLECTION.comment=Faz o sol e a luz refletirem luz no vidro e na água.
 value.SUN_REFLECTION.0=Off
-value.SUN_REFLECTION.1=On
+value.SUN_REFLECTION.1=Circular
+value.SUN_REFLECTION.2=Quadrado
 
 option.CLOUD_REFLECTION=§b▶§r Reflex. das nuvens vol.
 option.CLOUD_REFLECTION.comment=Faz as nuvens volumétricas criarem reflexos
@@ -302,6 +320,8 @@ option.AVOID_DARK_LEVEL.comment=Intensidade de luz mínima (porcentagem).
 value.AVOID_DARK_LEVEL.0.50=FULLBRIGHT
 
 option.NIGHT_BRIGHT=Brilho da noite
+option.NIGHT_BRIGHT_RANGE=Influência da lua
+option.NIGHT_BRIGHT_RANGE.comment=Controla o quanto o brilho noturno muda de acordo com a fase da lua. Menor = menor variação.
 
 option.V_CLOUDS=§a▶§r Nuvens
 option.V_CLOUDS.comment=Volumétrica estática: As nuvens se movem, mas mantêm sua forma. Volumétrica dinâmica: As nuvens mudam de forma com o tempo, uma paisagem de nuvens diferente a cada vez (impacto médio no desempenho). Vanilla: Nuvens vanilla originais.
@@ -348,7 +368,7 @@ value.CIRRUS_STEPS_AVG.10=§c▶§r §5§l§oMAX
 
 option.SIMPLE_SKY=§b▶§r Tipo do céu
 option.SIMPLE_SKY.comment=Apenas use esta opção com o esquema §b§lRealístico+§r, e se quiser o céu antigo do LITE, ou para melhorar ~5% da performance.
-value.SIMPLE_SKY.0=§5§lLITE 4.7.3
+value.SIMPLE_SKY.0=§5§lLITE 4.8
 value.SIMPLE_SKY.1=LITE 4.1
 
 
@@ -477,7 +497,7 @@ option.HOVER.comment=Olá! Aqui você pode ter algumas informações de LITE sha
 value.HOVER.0=
 
 option.VERSION=Info. da versão
-option.VERSION.comment=Nome: §lLITE §rshaders §5§l4.7.3§r. Build: BETA. Código: §5§l§oLT473§r. Data da versão: 9 de Dezembro de 2025. Baseado no MakeUp Ultrafast 9.3e
+option.VERSION.comment=Nome: §lLITE §rshaders §5§l4.8§r. Build: RELEASE. Código: §5§l§oLT48§r. Data da versão: 30 de Dezembro de 2025. Baseado no MakeUp Ultrafast 9.3e
 value.VERSION.0=
 
 option.PROFILES=Perfis Gráficos
@@ -493,7 +513,7 @@ option.PERF_IMPACT.comment=§6▶ Variável. §1▶ Zero. §9▶ Muito baixo. §
 value.PERF_IMPACT.0=
 
 option.CREDITS=Créditos
-option.CREDITS.comment=Entokito-Dezonze: o modificador e o tradutor para PT-BR e PT-PT desse shader. Javier Garduño: O criador do MakeUp Ultrafast, sem ele, LITE shaders não seria possível. Obrigado!
+option.CREDITS.comment=EntokitoDezonze: o modificador e o tradutor para PT-BR e PT-PT desse shader. Javier Garduño: O criador do MakeUp Ultrafast, sem ele, LITE shaders não seria possível. Obrigado!
 value.CREDITS.0=
 
 # End of info

@@ -76,13 +76,13 @@ void main() {
 
     // Exposure
     #if !defined SIMPLE_AUTOEXP
-        float mipmap_level = log2(min(viewWidth, viewHeight)) - 1.0;
+        float mipmap_level = log2(min(viewWidth * RENDER_SCALE , viewHeight * RENDER_SCALE)) - 1.0;
 
-        vec3 exposure_col = texture2DLod(colortex1, vec2(0.5), mipmap_level).rgb;
-        exposure_col += texture2DLod(colortex1, vec2(0.25), mipmap_level).rgb;
-        exposure_col += texture2DLod(colortex1, vec2(0.75), mipmap_level).rgb;
-        exposure_col += texture2DLod(colortex1, vec2(0.25, 0.75), mipmap_level).rgb;
-        exposure_col += texture2DLod(colortex1, vec2(0.75, 0.25), mipmap_level).rgb;
+        vec3 exposure_col = texture2DLod(colortex1, vec2(0.5 * RENDER_SCALE), mipmap_level).rgb;
+        exposure_col += texture2DLod(colortex1, vec2(0.25 * RENDER_SCALE), mipmap_level).rgb;
+        exposure_col += texture2DLod(colortex1, vec2(0.75 * RENDER_SCALE), mipmap_level).rgb;
+        exposure_col += texture2DLod(colortex1, vec2(0.25 * RENDER_SCALE, 0.75 * RENDER_SCALE), mipmap_level).rgb;
+        exposure_col += texture2DLod(colortex1, vec2(0.75 * RENDER_SCALE, 0.25 * RENDER_SCALE), mipmap_level).rgb;
         
         exposure = clamp(luma(exposure_col), 0.0005, 100.0);
 
@@ -118,6 +118,7 @@ void main() {
         tpos = vec4(tpos.xyz / tpos.w, 1.0);
         vec2 pos1 = tpos.xy / tpos.z;
         lightpos = pos1 * 0.5 + 0.5;
+        lightpos *= RENDER_SCALE;
     #endif
 
     #if (VOL_LIGHT == 1 && !defined NETHER) || (VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER)

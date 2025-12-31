@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.7.3 - volumetric_clouds.glsl
+/* MakeUp - LITE shaders 4.8 - volumetric_clouds.glsl
 Fast volumetric clouds - MakeUp & LITE shaders implementation
 */
 
@@ -77,8 +77,8 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
             increment = (intersection_pos_sup - intersection_pos) / 7;
             float sample_fix = 0.0;
         #else
-            increment = (intersection_pos_sup - intersection_pos) / samples;
-            float sample_fix = 2.0;
+            increment = (intersection_pos_sup - intersection_pos) / 8;
+            float sample_fix = 10.0;
         #endif
         increment_dist = length(increment);
 
@@ -108,13 +108,14 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
             // Ajuste por umbral
             #if CLOUD_VOL_STYLE == 0
                 current_value = (current_value - umbral) / (0.1 + dynamicValue - umbral);
+                float plateau = current_value;
             #else
-                current_value = (current_value - umbral) / (1.0 - umbral); 
+                current_value = (current_value - umbral) / (1.0 - umbral);
+                float plateau = pow(current_value, 0.1); 
             #endif
 
-            // Superficies inferior y superior de nubes
-            surface_inf = CLOUD_PLANE_CENTER - (current_value * dif_inf);
-            surface_sup = CLOUD_PLANE_CENTER + (current_value * dif_sup);
+            surface_inf = CLOUD_PLANE_CENTER - (plateau * dif_inf); 
+            surface_sup = CLOUD_PLANE_CENTER + (plateau * dif_sup);
 
             if (  // Dentro de la nube
                 intersection_pos.y > surface_inf &&
@@ -168,24 +169,34 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
         );
 
         // Sun halo.
-        cloud_color_1 =
-            mix(cloud_color_1, cloud_color_1 + light_color * day_blend_float(1.5, 3.0, 0.0), (1.0 - pow(cloud_value, 0.2)) * bright * (1.0 - rainStrength));
-
-        cloud_color_1 =
-            mix(cloud_color_1, cloud_color_1 + light_color * day_blend_float(0.0, 0.0, 0.25), (pow(cloud_value, 1.0)) * bright * bright * bright * (1.0 - rainStrength));
+        #if CLOUD_VOL_STYLE == 0
+            cloud_color_1 =
+                mix(cloud_color_1, cloud_color_1 + light_color * day_blend_float(3.0, 3.0, 0.0), (1.0 - pow(cloud_value, 0.2)) * bright * bright * bright * bright * (1.0 - rainStrength));
+        #else
+            cloud_color_1 =
+                mix(cloud_color_1, cloud_color_1 + light_color * day_blend_float(2.0, 1.5, 10.0), (1.0 - cloud_value) * bright * bright * sqrt(bright) * (1.0 - rainStrength));
+        #endif
 
         #if CLOUD_VOL_STYLE == 0
-        block_color = mix(
-            block_color,
-            cloud_color_1,
-            cloud_value * clamp((view_vector.y - 0.025) * mix(50.0, 6.0, rainStrength), 0.0, 1.0) * mix(1.0, 0.0, arid * rainStrength)
-        );
+            cloud_color_1 =
+                mix(cloud_color_1, cloud_color_1 + light_color * day_blend_float(0.0, 0.0, 0.25), (pow(cloud_value, 1.0)) * bright * bright * bright * (1.0 - rainStrength));
         #else
+            cloud_color_1 =
+                mix(cloud_color_1, cloud_color_1 + light_color * day_blend_float(0.1, 0.1, 0.25), (pow(cloud_value, 1.0)) * bright * bright * bright * (1.0 - rainStrength));
+        #endif
+
+        #if CLOUD_VOL_STYLE == 0
             block_color = mix(
-            block_color,
-            cloud_color_1,
-            cloud_value * clamp((view_vector.y - 0.06) * 5.0, 0.0, 1.0)
-        );
+                block_color,
+                cloud_color_1,
+                cloud_value * clamp((view_vector.y - 0.025) * mix(50.0, 6.0, rainStrength), 0.0, 1.0) * (1 - arid * rainStrength)
+            );
+        #else
+                block_color = mix(
+                block_color,
+                cloud_color_1,
+                cloud_value * clamp((view_vector.y - 0.06) * 5.0, 0.0, 1.0)
+            );
         #endif
 
     #ifdef CIRRUS

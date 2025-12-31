@@ -8,6 +8,8 @@ varying vec3 worldPos;
 uniform vec3 cameraPosition;
 uniform float frameTimeCounter;
 uniform float rainStrength;
+uniform float viewWidth;
+uniform float viewHeight;
 
 /* Ins / Outs */
 
@@ -20,10 +22,13 @@ varying float is_water;
 #include "/lib/caustics.glsl"
 #include "/lib/luma.glsl"
 
+#define FRAGMENT
+#include "/lib/downscale.glsl"
+
 // MAIN FUNCTION ------------------
 
 void main() {
-
+  
     #ifndef CAUSTICS
         if (is_water > 0.98) {
             discard;

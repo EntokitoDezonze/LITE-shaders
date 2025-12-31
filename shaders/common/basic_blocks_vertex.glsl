@@ -15,6 +15,10 @@
 uniform float rainStrength;
 uniform float wetness;
 uniform mat4 gbufferProjectionInverse;
+uniform float viewWidth; 
+uniform float viewHeight; 
+uniform int frameCounter;
+uniform float frameTime;
 
 #if defined SHADOW_CASTING && !defined NETHER
     uniform mat4 gbufferModelViewInverse;
@@ -34,12 +38,14 @@ varying vec3 basic_light;
 #if AA_TYPE > 0
     #include "/src/taa_offset.glsl"
 #endif
+#include "/lib/downscale.glsl"
 
 // MAIN FUNCTION ------------------
 
 void main() {
     #include "/src/basiccoords_vertex.glsl"
     #include "/src/position_vertex.glsl"
+    resize_vertex(gl_Position);
     tint_color = gl_Color;
 
     basic_light = day_blend(LIGHT_SUNSET_COLOR, LIGHT_DAY_COLOR, LIGHT_NIGHT_COLOR);

@@ -128,7 +128,7 @@ uniform sampler2D shadowcolor0;
 uniform sampler2D colortex3;
 #endif
 
-uniform sampler2D gaux3;;
+uniform sampler2D gaux3;
 uniform sampler2D colortex1;
 uniform float viewWidth;
 uniform float viewHeight;
@@ -137,11 +137,12 @@ uniform int isEyeInWater;
 uniform float day_moment;
 uniform float day_mixer;
 uniform float night_mixer;
-
-#if AA_TYPE == 3
-    uniform float pixel_size_x;
-    uniform float pixel_size_y;
-#endif
+uniform float near;
+uniform float far;
+uniform float pixel_size_x;
+uniform float pixel_size_y;
+uniform sampler2D depthtex1;
+uniform float frameTime;
 
 /* Ins / Outs */
 
@@ -152,6 +153,7 @@ varying float exposure;
 
 #include "/lib/basic_utils.glsl"
 #include "/lib/tone_maps.glsl"
+#include "/lib/dither.glsl"
 
 #ifdef COLOR_BLINDNESS
     #include "/lib/color_blindness.glsl"
@@ -163,29 +165,54 @@ varying float exposure;
 
 #include "/lib/day_blend.glsl"
 
-#if defined VIGNETTE || defined FAKE_BLOOM || defined FILM_GRAIN || defined COLOR_BLINDNESS || AA_TYPE == 3
-    #include "/lib/post_processing.glsl"
-#endif
 // Vignette, Film grain, Sharpening and Fake bloom.
+#if defined VIGNETTE || defined FAKE_BLOOM || defined FILM_GRAIN || defined COLOR_BLINDNESS || AA_TYPE == 3
+    #include "/lib/post_processing.glsl"    
+#endif
+
+
+#ifdef FXAA
+    #include "/lib/fxaa.glsl"
+#endif
+
+#define FRAGMENT
+#include "/lib/downscale.glsl"
 
 void main() {
     vec2 pixelUV = texcoord;
 
     #ifdef PS1_LIKE
-        pixelUV = floor(texcoord * vec2(viewWidth, viewHeight) / PIXEL_SIZE) * PIXEL_SIZE / vec2(viewWidth, viewHeight);
+        pixelUV = floor(texcoord * vec2(viewWidth, viewHeight) / PIXEL_SIZE) * PIXEL_SIZE / vec2(viewWidth, viewHeight) * RENDER_SCALE;
     #endif // PS1 filter
 
     #ifdef CHROMA_ABER
         vec3 block_color = color_aberration();
     #else
-        vec3 block_color = texture2DLod(colortex1, pixelUV, 0.0).rgb;
-    #endif
+       vec3 block_color = texture2DLod(colortex1, pixelUV, 0.0).rgb;
 
-    #ifndef PS1_LIKE
-        #if AA_TYPE == 3
-            block_color = sharpen(colortex1, block_color, texcoord);
+       #if AA_TYPE == 3 && !defined FSR && !defined PS1_LIKE
+            #ifdef FXAA
+               block_color = fxaa311(block_color, 3, pixelUV);
+            #endif
+
+            block_color = sharpen(colortex1, block_color, pixelUV);
+        #elif AA_TYPE == 3 && defined FSR
+            /* FSR UPSCALE RENDER STAGES:
+            1. Vertices are "smashed" on left inferior quadrant based on RENDER_SCALE.
+            2. Pixels out of that quadrant are discarded, improving performance.
+            3. Anti-ghost TAA is aplied on composite2, and result will be sent to composite3.
+            4. Low-Resolution image will be upscaled with AMD FSR to fill screen on composite3 and image is sent to final.
+            5. FXAA is aplied.
+            6. Unsharp-Mask is aplied.
+            7. Image is sent to post effects (saturation, constrast, etc.) then, to screen.            
+            */
+            #if defined FXAA
+                block_color = fxaa311(block_color, 5, pixelUV);
+            #endif
+            
+            block_color = sharpen_cas(colortex1, block_color, pixelUV, RENDER_SCALE, SHARP_FORCE / RENDER_SCALE);
         #endif
-    #endif // Disable sharpening if PS1 is on.
+    #endif
 
     // Dark areas dessaturation and blueness.
     if (isEyeInWater == 1) {
@@ -198,13 +225,10 @@ void main() {
         block_color = mix(saturate(block_color, clamp(luma_factor + 0.5, 0.7, 1.0)) * vec3(0.9, 0.95, 1.1), block_color, shadow_desaturation);
     } // Water overlay
 
-
-
-
     #if defined SIMPLE_AUTOEXP && COLOR_SCHEME != 11
-        float exposure_final = day_blend_float(2.0, 1.0, 4.0);
+        float exposure_final = day_blend_float(1.5, 0.85, 2.25);
     #elif COLOR_SCHEME == 11 && defined SIMPLE_AUTOEXP
-        float exposure_final = day_blend_float(1.0, 0.6, 3.0);
+        float exposure_final = day_blend_float(0.75, 0.75, 2.0);
     #elif COLOR_SCHEME == 11 && !defined SIMPLE_AUTOEXP
         float exposure_final = exposure * day_blend_float(0.8, 1.0, 1.0);
     #else
@@ -214,7 +238,7 @@ void main() {
     block_color *= vec3(RED, GREEN, BLUE) * vec3(exposure_final * EXPOSURE) * BRIGHTNESS; // Color balance, Exposure, Brightness. 
     block_color = (block_color - 0.5) * CONTRAST + 0.5; // Contrast
     block_color = saturate(block_color.rgb, SATURATION); // Saturation
-    block_color = vibrance(block_color.rgb, VIBRANCE);
+    block_color = vibrance(block_color.rgb, VIBRANCE); // Vibrance
     block_color = pow(block_color.rgb, vec3(1 / GAMMA)); // Gamma
     
     #if TONEMAPPING == 0

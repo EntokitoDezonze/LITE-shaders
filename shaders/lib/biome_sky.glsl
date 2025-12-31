@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.7.3 - biome_sky.glsl #include "/lib/biome_sky.glsl"
+LITE shaders 4.8 - biome_sky.glsl #include "/lib/biome_sky.glsl"
 Biome-based sky color calculation. Cálculo de cores do céu baseado em bioma. */
 
 uniform float swamp;

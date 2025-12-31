@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.7.3 - shadow.fsh
+/* MakeUp - LITE shaders 4.8 - shadow.fsh
 Render: Shadowmap
 
 Javier Garduño - GNU Lesser General Public License v3.0

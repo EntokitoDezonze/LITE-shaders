@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.7.3 - end_portal.glsl #include "/lib/end_portal.glsl"
+LITE shaders 4.8 - end_portal.glsl #include "/lib/end_portal.glsl"
 End portal render. - Renderização do portal do End. */
 
 #include "/lib/render_aux.glsl"
@@ -15,22 +15,21 @@ vec3 end_portal() {
     const vec2 flow_direction = vec2(0.618034);
     const float flow_speed = 0.333;
     const float noise_base_scale = 5;
-    const float color_mix_speed = 0.5;
+    const float color_mix_speed = 0.67; // sixseven!!
     const float clip_min = 0.75;
     const float clip_max = 1.0;
     const vec3 base_color = vec3(0.0, 0.0, 0.0);
 
     const vec3 C0 = vec3(0.3137, 0.1255, 0.4314);
     const vec3 C1 = vec3(0.1961, 0.3529, 0.9882);
-    const vec3 C2 = vec3(0.0, 0.4157, 0.5922);
+    const vec3 C2 = vec3(0.1608, 0.3961, 0.4941);
 
     vec2 resolution = vec2(viewWidth, viewHeight);
     float time = mod(frameTimeCounter, 1000.0);
 
     vec3 world_pos_current = reconstructWorldPosition(gl_FragCoord.z, resolution);
-    world_pos_current.xz *= 1.0;
 
-    // --- CORREÇÃO AQUI: USAR POSIÇÃO MUNDIAL ABSOLUTA PARA NOISE 3D ---
+    // --- PT: CORREÇÃO AQUI: USAR POSIÇÃO MUNDIAL ABSOLUTA PARA NOISE ENG: FIX HERE: USE ABSOLUTE WORLD POSITION FOR NOISE ---
     
     vec3 final_color = base_color;
     float t_mix = time * color_mix_speed;

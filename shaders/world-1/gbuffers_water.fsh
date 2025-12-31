@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.7.3 - gbuffers_water.fsh
+/* MakeUp - LITE shaders 4.8 - gbuffers_water.fsh
 Render: Water and translucent blocks
 
 Javier Garduño - GNU Lesser General Public License v3.0

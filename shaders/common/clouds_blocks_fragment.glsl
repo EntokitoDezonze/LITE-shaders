@@ -8,6 +8,8 @@ uniform float blindness;
 uniform float day_moment;
 uniform float day_mixer;
 uniform float night_mixer;
+uniform float viewWidth;
+uniform float viewHeight;
 
 #if MC_VERSION >= 11900
     uniform float darknessFactor;
@@ -30,11 +32,15 @@ uniform float night_mixer;
 #include "/lib/day_blend.glsl"
 #include "/lib/luma.glsl"
 
+#define FRAGMENT
+#include "/lib/downscale.glsl"
+
 // Main function ---------
 
 void main() {
+    if(fragment_cull()) discard;
     #if V_CLOUDS == 0 || defined UNKNOWN_DIM
-        vec4 block_color = texture2D(tex, texcoord) * tint_color;
+        vec4 block_color = texture2D(tex, texcoord * RENDER_SCALE) * tint_color;
         #if COLOR_SCHEME == 11
             block_color.rgb *= day_blend_float(1.0, 1.9, 0.25);
             block_color.rgb = saturate(block_color.rgb, day_blend_float(1.0, 0.0, 0.5));
@@ -43,6 +49,9 @@ void main() {
         #elif COLOR_SCHEME == 12
             block_color.rgb *= day_blend_float(0.05, 0.1, 0.025);
         #endif
+
+        block_color.a = 0.95;
+        block_color.rgb *= 0.8;
         #include "/src/cloudfinalcolor.glsl"
         #include "/src/writebuffers.glsl"
     #elif MC_VERSION <= 11300

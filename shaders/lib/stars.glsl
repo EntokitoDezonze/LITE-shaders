@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.7.3 - stars.glsl
+LITE shaders 4.8 - stars.glsl
 Stars render fixed in world space. - Renderização de estrelas fixas no espaço do mundo. 
 
 Based on https://www.shadertoy.com/view/Md2SR3
@@ -12,7 +12,7 @@ Based on https://www.shadertoy.com/view/Md2SR3
 #include "/lib/render_aux.glsl"
 
 float NoisyStarField(in vec2 p_grid_coord, float fThreshhold) {
-    float StarVal = noise2D_grid_inclined(p_grid_coord);
+    float StarVal = noise2D_grid(p_grid_coord);
     
     if (StarVal >= fThreshhold) {
         StarVal = pow((StarVal - fThreshhold) / (1.0 - fThreshhold), 10.0); // <- Calculate stars
@@ -78,7 +78,7 @@ vec3 stars() {
     // This calc makes the stars to follow the moon.
 
         vec2 p_spherical = cubic_uv(dir); 
-        float star_scale = 400.0;
+        float star_scale = 500.0;
         vec2 p_continuous = p_spherical * star_scale;
         float star_density_threshold = 0.9925 - (0.015 * STARS_COVERAGE * STARS_COVERAGE);
         float star_brightness = STARS_BRIGHTNESS * 0.75;
@@ -86,7 +86,7 @@ vec3 stars() {
         vec3 final_color = vec3(star_intensity);
 
         #ifndef THE_END
-            final_color *= day_blend_float_lgcy(0.1, 0.0, 1.0) * (star_brightness * 0.5 + 0.5);
+            final_color *= day_blend_float_lgcy(0.1, 0.0, 0.9) * (star_brightness * 0.5 + 0.5) * (1 -rainStrength);
         #endif
 
         #ifdef THE_END

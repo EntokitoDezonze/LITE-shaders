@@ -97,9 +97,9 @@ The result will be written in:
 "Preparing bloom" means saving a version of the current scene with the applied exposure level to gaux1.
 The calculated autoexposure value is also saved to gaux3.
 
-7. In Composite1, DOF is calculated and bloom is applied. To apply bloom, a mipmap level of the gaux3 buffer calculated in the previous step is read. The result is written to colortex1
+7. In Composite1, DOF and motion blur are calculated and bloom is applied. To apply bloom, a mipmap level of the gaux3 buffer calculated in the previous step is read. The result is written to colortex1.
 
-8. In Composite2, AA and motion blur are calculated. The result is written to colortex0. If temporal super-sampling is enabled, the history is written to colortex3.
+8. In Composite2, AA is calculated. The result is written to colortex0. If temporal super-sampling is enabled, the history is written to colortex3.
 
 9. Finally, post-processing effects such as chromatic aberration, autoexposure, tone mapping, and color blindness aids are applied in Final.
 The image is then sent to the screen.

@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.7.3 - gbuffers_block.fsh
+/* MakeUp - LITE shaders 4.8 - gbuffers_block.fsh
 Render: Generic blocks
 
 Javier Garduño - GNU Lesser General Public License v3.0

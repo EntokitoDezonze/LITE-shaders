@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.7.3 - fps_correction.glsl #include "/lib/fps_correction.glsl"
+LITE shaders 4.8 - fps_correction.glsl #include "/lib/fps_correction.glsl"
 Reduce quality of some effects on low fps for stabilize performance. - Reduzir a qualidade de alguns efeitos em baixo fps para estabilizar performance */
 
 float fps = 1 / frameTime;

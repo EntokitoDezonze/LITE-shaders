@@ -17,13 +17,13 @@ profile.comment=The "Shadowless" profiles are designed for low-performance machi
 #############################
 option.ACERCADE=§lLITE shaders
 option.ACERCADE.comment=Thanks for using this shader! :). Set Iris or OptiFine native quality controls on normal or default values for better quality. Modified by: @Entokito Dezonze, revision on this language by tasxatzial
-value.ACERCADE.1=§f§lLT473
-value.ACERCADE.2=§9§lLT473
-value.ACERCADE.3=§b§lLT473
-value.ACERCADE.4=§a§lLT473
-value.ACERCADE.5=§e§lLT473
-value.ACERCADE.6=§4§lLT473
-value.ACERCADE.7=§5§l§oLT473
+value.ACERCADE.1=§f§lLT48
+value.ACERCADE.2=§9§lLT48
+value.ACERCADE.3=§b§lLT48
+value.ACERCADE.4=§a§lLT48
+value.ACERCADE.5=§e§lLT48
+value.ACERCADE.6=§4§lLT48
+value.ACERCADE.7=§5§l§oLT48
 
 #Style
 option.STYLE=§lStyle
@@ -93,7 +93,7 @@ option.COLOR_BITS=§b▶§r Color bits
 option.COLOR_BITS.comment=Adjusts how many bits of color can be displayed on the screen. More bits: More colors, reducing this option can improve performance, but can cause color banding. This option only works with "Greater color range" turned off.
 
 option.FOLIAGE_V=§9▶§r Realistic foliage
-option.FOLIAGE_V.comment=Activates light transparency for leaves and plants.
+option.FOLIAGE_V.comment=Activates light transparency and wind effect for leaves and plants.
 
 option.SHADOW_DISTANCE_SLIDER=§a▶§r Shadow dist.
 option.SHADOW_DISTANCE_SLIDER.comment=Recommended config is to use it in more than 80% of your render distance for best performance / quality ratio
@@ -181,11 +181,29 @@ option.AO_STRENGTH=AO strength
 suffix.AO_STRENGTH=x
 
 option.AA_TYPE=§b▶§r Antialiasing
-option.AA_TYPE.comment=Turns on the Antialiasing. Denoise has no antialiasing but has anti-dithering. Sharp TAA uses adaptive contrast to apply sharpness, and the use of normal TAA is not recommended, because the image can look too blurry.
+option.AA_TYPE.comment=Turns on the Antialiasing. Denoise has no antialiasing but has anti-dithering. §b§lSmart TAA§r uses adaptive contrast to apply sharpness, The use of normal TAA is not recommended, because the image can look too blurry.
 value.AA_TYPE.0=Off
 value.AA_TYPE.1=Denoise
 value.AA_TYPE.2=TAA §c(!)
 value.AA_TYPE.3=§b§lSmart TAA
+
+option.RENDER_SCALE_INT=§c§lFSR§r mode
+suffix.RENDER_SCALE_INT=%
+option.RENDER_SCALE_INT.comment=Adjusts the resolution that the shader is rendered, can improve performance. 50% scale is more recommended when you are playing in 4K. §c§l§oFSR 1§r will upscale the image on low resolutions.
+
+value.RENDER_SCALE_INT.100=§5§l§oNative
+value.RENDER_SCALE_INT.85=§4§lUltra quality
+value.RENDER_SCALE_INT.76=§e§lQuality
+value.RENDER_SCALE_INT.67=§a§lBalanced
+value.RENDER_SCALE_INT.58=§b§lPerformance
+value.RENDER_SCALE_INT.50=§9§lUltra Performance
+
+
+screen.FSR_SCREEN=§c§lAMD FidelityFX
+option.FSR=§c§lFSR 1§r
+option.FSR.comment=§c§lFSR 1§r Enables §c§lAMD FSR 1§r, improves image quality when render scale is low. Enable this option before reducing render scale.
+option.FXAA=§9▶§r FXAA
+option.FXAA.comment= Enables FXAA, very helpful especially on low render scales. This option will only works if §b§lSmart TAA§r is enabled.
 
 option.MOTION_BLUR=§b▶§r Motion blur
 option.MOTION_BLUR.comment=Enables motion blur.
@@ -227,8 +245,10 @@ value.SSR_TYPE.0=Flipped image
 value.SSR_TYPE.1=§a§lRaymarching§r
 
 option.SUN_REFLECTION=§b▶§r Sun reflection
+option.SUN_REFLECTION.comment=Makes sun and moon reflects on glass and water.
 value.SUN_REFLECTION.0=Off
-value.SUN_REFLECTION.1=On
+value.SUN_REFLECTION.1=Circular
+value.SUN_REFLECTION.2=Square
 
 option.CLOUD_REFLECTION=§b▶§r Vol. clouds reflection
 option.CLOUD_REFLECTION.comment=Makes volumetric clouds create reflections
@@ -325,6 +345,9 @@ value.AVOID_DARK_LEVEL.50.0=FULLBRIGHT
 
 option.NIGHT_BRIGHT=Night brightness
 suffix.NIGHT_BRIGHT=x
+option.NIGHT_BRIGHT_RANGE=Moon Phase influence
+option.NIGHT_BRIGHT_RANGE.comment=Controls how much brightness on night is changed in different moon phases.
+suffix.NIGHT_BRIGHT_RANGE=x
 
 option.V_CLOUDS=§a▶§r Clouds
 option.V_CLOUDS.comment=Volumetric static: The clouds move, but they keep their shape. Volumetric dynamic: Clouds change shape over time, creating a different cloud landscape every time (medium performance hit). Vanilla: Original vanilla clouds.
@@ -377,7 +400,7 @@ value.CIRRUS_STEPS_AVG.10=§c▶§r §5§l§oMAX
 
 option.SIMPLE_SKY=§b▶§r §rSky type
 option.SIMPLE_SKY.comment=Only use this option with §b§lRealistic+ §rcolor scheme, if you want the old sky of LITE, or to improve performance by ~5%.
-value.SIMPLE_SKY.0=§5§lLITE 4.7.3
+value.SIMPLE_SKY.0=§5§lLITE 4.8
 value.SIMPLE_SKY.1=LITE 4.1
 
 option.BLOOM=§b▶§r Bloom
@@ -512,7 +535,7 @@ option.HOVER.comment=Hi! Here you can see some information about LITE shaders!
 value.HOVER.0=
 
 option.VERSION=Version info
-option.VERSION.comment=Name: §lLITE §rshaders §5§l4.7.3§r. Build: BETA. Code: §5§l§oLT473§r. Version date: December, 9th, 2025. Based in MakeUp Ultrafast 9.3e
+option.VERSION.comment=Name: §lLITE §rshaders §5§l4.8§r. Build: RELEASE. Code: §5§l§oLT48§r. Version date: December, 30th, 2025. Based in MakeUp Ultrafast 9.3e
 value.VERSION.0=
 
 option.PROFILES=Graphic profiles
@@ -528,7 +551,7 @@ option.PERF_IMPACT.comment=§6▶ Variable. §1▶ Zero. §9▶ Very low. §b▶
 value.PERF_IMPACT.0=
 
 option.CREDITS=Credits
-option.CREDITS.comment=Entokito-Dezonze: The modifier and translator for PT-BR and PT-PT of this shader. Javier Garduño: The creator of MakeUp Ultrafast, without him, LITE shaders would not be possible. Thank you!
+option.CREDITS.comment=EntokitoDezonze: The modifier and translator for PT-BR and PT-PT of this shader. Javier Garduño: The creator of MakeUp Ultrafast, without him, LITE shaders would not be possible. Thank you!
 value.CREDITS.0=
 
 # End of info
@@ -545,7 +568,7 @@ screen.SHADOWS_SCREEN=Shadows
 screen.SHADOWS_SCREEN.comment=Set shadows options
 
 screen.BLOOM_SCREEN=Bloom
-screen.BLOOM_SCREEN.comment=Set depth of field options
+screen.BLOOM_SCREEN.comment=Set bloom options
 
 screen.AO_SCREEN=Ambient occlusion
 screen.AO_SCREEN.comment=Set ambient occlusion options

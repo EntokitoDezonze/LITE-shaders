@@ -43,7 +43,10 @@ varying float direct_light_strength;
 varying vec3 omni_light;
 varying vec4 position;
 varying float fog_adj;
-
+uniform float viewWidth; 
+uniform float viewHeight; 
+uniform int frameCounter;
+uniform float frameTime;
 /* Utility functions */
 
 #if AA_TYPE > 0
@@ -55,6 +58,7 @@ varying float fog_adj;
 
 #define FOG_BIOME
 #include "/lib/biome_sky.glsl"
+#include "/lib/downscale.glsl"
 
 // MAIN FUNCTION ------------------
 
@@ -66,6 +70,7 @@ void main() {
 
     #include "/src/basiccoords_vertex_dh.glsl"
     #include "/src/position_vertex_dh.glsl"
+    resize_vertex(gl_Position);
     #include "/src/hi_sky.glsl"
     #include "/src/light_vertex_dh.glsl"
     #include "/src/fog_vertex_dh.glsl"

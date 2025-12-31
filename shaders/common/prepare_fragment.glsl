@@ -1,4 +1,4 @@
-// LITE shaders 4.7.3 - Prepare_fragment.glsl
+// LITE shaders 4.8 - Prepare_fragment.glsl
 // Sky colors.
 
 #include "/lib/config.glsl"
@@ -32,6 +32,7 @@ uniform vec3 cameraPosition;
 uniform mat4 gbufferModelViewInverse;
 uniform float viewWidth;
 uniform float viewHeight;
+uniform int frameCounter;
 
 /* Ins / Outs */
 
@@ -54,10 +55,13 @@ varying vec4 position;
     #include "/lib/stars.glsl"
 #endif
 
+#define FRAGMENT
+#include "/lib/downscale.glsl"
 
 // MAIN FUNCTION ------------------
 
 void main() {
+    if(fragment_cull()) discard;
     #if defined THE_END 
         vec4 star_color = vec4(stars(), 1.0);
         vec3 block_color = ZENITH_DAY_COLOR + star_color.rgb;

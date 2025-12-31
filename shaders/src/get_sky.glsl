@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.7.3 - get_sky.glsl
+LITE shaders 4.8 - get_sky.glsl
 Sky render. - Renderização do céu. 
 */
 
@@ -18,7 +18,7 @@ vec3 sky_color;
 dither = (dither - .5) * 0.03125;
 
 #if ((COLOR_SCHEME == 8 && SIMPLE_SKY == 0) || COLOR_SCHEME == 12) && !defined UNKNOWN_DIM // LITE Realistic Plus            
-    vec4 fragpos = gbufferProjectionInverse * (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y), gl_FragCoord.z, 1.0) * 2.0 - 1.0);
+    vec4 fragpos = gbufferProjectionInverse * (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y) / RENDER_SCALE, gl_FragCoord.z, 1.0) * 2.0 - 1.0);
     vec3 nfragpos = normalize(fragpos.xyz);
     float n_u = clamp(dot(nfragpos, up_vec) + 0.1 + dither, 0.0, 1.0);
 
@@ -44,7 +44,7 @@ dither = (dither - .5) * 0.03125;
 #elif COLOR_SCHEME == 11 // Vanilla
     vec4 fragpos =
         gbufferProjectionInverse *
-        (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y), gl_FragCoord.z, 1.0) * 2.0 - 1.0);
+        (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y) / RENDER_SCALE, gl_FragCoord.z, 1.0) * 2.0 - 1.0);
     vec3 nfragpos = normalize(fragpos.xyz);
     float n_u = clamp(dot(nfragpos, up_vec) - 0.1 + dither, 0.0, 1.0);
     
@@ -67,7 +67,7 @@ dither = (dither - .5) * 0.03125;
 #else // Using legacy color interpolation.
     vec4 fragpos =
         gbufferProjectionInverse *
-        (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y), gl_FragCoord.z, 1.0) * 2.0 - 1.0);
+        (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y) / RENDER_SCALE, gl_FragCoord.z, 1.0) * 2.0 - 1.0);
     vec3 nfragpos = normalize(fragpos.xyz);
     float n_u = clamp(dot(nfragpos, up_vec) + dither, 0.0, 1.0);
     

@@ -16,15 +16,13 @@ visible_sky = clamp(illumination.y, 0.0, 1.0);
 #endif
 
 // Intensidad y color de luz de candelas
-// --- OPTIMIZATION #1: Replace pow(x, 1.5) to x * sqrt(x) --- //
-// LITE optimization: Replace pow(x, 1.5) to direct multiplications.
 
 float illuminationx_2 = illumination.x * illumination.x * 1.3;
 float illuminationx_4 = illuminationx_2 * illuminationx_2;
 float illuminationx_8 = illuminationx_4 * illuminationx_4;
 float illuminationx_15 = illuminationx_8 * illuminationx_4 * illuminationx_2 * illumination.x;
 
-candle_color = CANDLE_BASELIGHT * (illumination.x * sqrt(illumination.x) + illuminationx_15);
+candle_color = CANDLE_BASELIGHT * (illuminationx_2 + illuminationx_15);
 candle_color = clamp(candle_color, vec3(0.0), vec3(4.0));
 
 // Atenuación por dirección de luz directa ===================================
@@ -86,9 +84,15 @@ float vis_sky_8 = vis_sky_4 * vis_sky_4;
 #elif defined NETHER
     omni_light = LIGHT_DAY_COLOR * 2.0;
 #else
+    #if COLOR_SCHEME == 11
+        float rain_mul = day_blend_float(0.5, 0.4, 0.4);
+    #else
+        float rain_mul = day_blend_float(0.4, 0.2, 0.333);
+    #endif
+    
     direct_light_color = mix(
         direct_light_color,
-        ZENITH_SKY_RAIN_COLOR * luma(direct_light_color) * day_blend_float(0.4, 0.2, 1.5),
+        ZENITH_SKY_RAIN_COLOR * luma(direct_light_color) * rain_mul,
         rainStrength
     );
 
@@ -104,11 +108,11 @@ float vis_sky_8 = vis_sky_4 * vis_sky_4;
     float omni_color_luma = luma(omni_color);
     
     #if defined SIMPLE_AUTOEXP && COLOR_SCHEME != 11
-        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, day_blend_float(0.7, 0.4, 0.0), 1.0);    
+        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, day_blend_float(0.7, 0.4, 0.0) / 4 * AVOID_DARK_LEVEL, 10.0);    
     #elif defined SIMPLE_AUTOEXP && COLOR_SCHEME == 11
-        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, day_blend_float(0.4, 0.45, 0.6), 1.0);
+        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, day_blend_float(0.4, 0.45, 0.6) / 4 * AVOID_DARK_LEVEL, 10.0);
     #else
-        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, 0.125, 1.0);
+        float luma_ratio = clamp(AVOID_DARK_LEVEL / omni_color_luma * 0.01, 0.03125 * AVOID_DARK_LEVEL, 10.0);
     #endif
     
     vec3 omni_color_min = omni_color * luma_ratio;

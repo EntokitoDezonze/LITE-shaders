@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.7.3 - gbuffers_entities.vsh
+/* MakeUp - LITE shaders 4.8 - gbuffers_entities.vsh
 Render: Droped objects, mobs and things like that
 
 Javier Garduño - GNU Lesser General Public License v3.0

@@ -28,21 +28,25 @@ vec3 antiRed = day_blend(vec3(1.0), vec3(0.0, 1.5, 1.0), vec3(1.0)); // Avoid re
             LIGHT_DAY_COLOR * 0.9,
             LIGHT_NIGHT_COLOR * 1.333
         ),
-        ZENITH_SKY_RAIN_COLOR * day_blend_float(1.0, 0.75, 1.75) * saturate(dark_cloud_color, 0.2),
+        ZENITH_SKY_RAIN_COLOR * day_blend_float(1.0, 0.75, 1.0) * saturate(dark_cloud_color, 0.2),
         rainStrength
     );
 #else
     dark_cloud_color = day_blend(
         ZENITH_SUNSET_COLOR * 0.5,
-        saturate(ZENITH_DAY_COLOR, 2.0) * 0.8,
-        ZENITH_NIGHT_COLOR
+        #if COLOR_SCHEME == 11
+            ZENITH_DAY_COLOR * 0.5,
+        #else
+            ZENITH_DAY_COLOR * 1.5,
+        #endif
+        ZENITH_NIGHT_COLOR * 0.5
     );
     
     vec3 cloud_color_aux = mix(
         day_blend(
-            saturate(LIGHT_SUNSET_COLOR, 0.5) * day_blend_float(0.5, 0.5, 0.15),
-            LIGHT_DAY_COLOR * 0.75,
-            LIGHT_NIGHT_COLOR * 1.5
+            saturate(LIGHT_SUNSET_COLOR, 0.5) * day_blend_float(0.6, 0.5, 0.15),
+            LIGHT_DAY_COLOR * 0.9,
+            saturate(LIGHT_NIGHT_COLOR, 0.5) * 1.5
         ),
         ZENITH_SKY_RAIN_COLOR * saturate(dark_cloud_color, 0.2) * day_blend_float(1.0, 0.85, 1.5),
         rainStrength

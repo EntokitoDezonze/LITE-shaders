@@ -37,7 +37,7 @@ vec3 get_shadow(vec3 the_shadow_pos, float dither) {
             }
 
             final_color = mix(final_color, vec3(0.0), 1.0 - shadow_black);
-            final_color = saturate(final_color, 3.0);
+            final_color = saturate(final_color, 6.0);
             final_color = clamp(final_color * (1.0 - shadow_detector) + shadow_detector, vec3(0.0), vec3(1.0));
             
             return final_color;
@@ -76,7 +76,7 @@ vec3 get_shadow(vec3 the_shadow_pos, float dither) {
             processed_color2 = mix(processed_color2, vec3(0.0), 1.0 - black2);
 
             final_color = (processed_color1 + processed_color2) * 0.5;
-            final_color = saturate(final_color, 3.0);
+            final_color = saturate(final_color, 6.0);
             float final_detector = (detector1 + detector2) * 0.5;
             
             return clamp(mix(final_color, vec3(1.0), final_detector), vec3(0.0), vec3(1.0));

@@ -57,7 +57,10 @@ varying vec3 low_sky_color;
 varying vec3 pure_hi_sky_color;
 varying vec3 pure_mid_sky_color;
 varying vec3 pure_low_sky_color;
-
+uniform float viewWidth; 
+uniform float viewHeight; 
+uniform int frameCounter;
+uniform float frameTime;
 /* Utility functions */
 
 #if AA_TYPE > 0
@@ -69,6 +72,7 @@ varying vec3 pure_low_sky_color;
 
 #define FOG_BIOME
 #include "/lib/biome_sky.glsl"
+#include "/lib/downscale.glsl"
 
 // MAIN FUNCTION ------------------
 
@@ -81,6 +85,7 @@ void main() {
     
     #include "/src/basiccoords_vertex_dh.glsl"
     #include "/src/position_vertex_dh.glsl"
+    resize_vertex(gl_Position);
     #include "/src/light_vertex_dh.glsl"
     #include "/src/fog_vertex_dh.glsl"
 

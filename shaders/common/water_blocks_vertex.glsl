@@ -25,7 +25,10 @@ uniform float rainStrength;
 uniform float wetness;
 uniform mat4 gbufferProjectionInverse;
 uniform vec4 lightningBoltPosition;
-
+uniform float viewWidth; 
+uniform float viewHeight; 
+uniform int frameCounter;
+uniform float frameTime;
 #ifdef DISTANT_HORIZONS
     uniform int dhRenderDistance;
 #endif
@@ -107,6 +110,7 @@ attribute vec4 at_tangent;
 #define FOG_BIOME
 #define PREPARE_SHADER
 #include "/lib/biome_sky.glsl"
+#include "/lib/downscale.glsl"
 
 // MAIN FUNCTION ------------------
 
@@ -115,7 +119,9 @@ void main() {
 
     #include "/src/basiccoords_vertex.glsl"
     #include "/src/position_vertex_water.glsl"
-
+    
+    resize_vertex(gl_Position);
+    
     // Sky color calculation
     #include "/src/hi_sky.glsl"
     #include "/src/mid_sky.glsl"
@@ -131,11 +137,13 @@ void main() {
     // Special entities 3 - Water, 2 - Glass, -1 - Nether portal, ? - Other
     float is_water = step(abs(mc_Entity.x - ENTITY_WATER), 0.5);
     float is_stained_glass = max(step(abs(mc_Entity.x - ENTITY_STAINED), 0.5), step(abs(mc_Entity.x - ENTITY_ICE), 0.5));
+    float is_white_glass = step(abs(mc_Entity.x - ENTITY_GLASS_WHITE), 0.5);
     float is_portal = step(abs(mc_Entity.x - ENTITY_PORTAL), 0.5);
     float is_ice = step(abs(mc_Entity.x - ENTITY_ICE), 0.5);
 
     block_type = mix(0.0, 3.0, is_water);
     block_type = mix(block_type, 2.0, is_stained_glass);
+    block_type = mix(block_type, 2.2, is_white_glass);
     block_type = mix(block_type, 0.1, is_portal);
     block_type = mix(block_type, 2.4, is_ice);
     

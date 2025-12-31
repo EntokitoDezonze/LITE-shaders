@@ -15,13 +15,14 @@
 /* Uniforms */
 
 uniform sampler2D tex;
-
+uniform float viewWidth;
+uniform float viewHeight;
+uniform int frameCounter;
+uniform float frameTime;
 #ifdef THE_END
     uniform float frameTimeCounter;
     uniform vec3 cameraPosition;
     uniform mat4 gbufferModelViewInverse;
-    uniform float viewWidth;
-    uniform float viewHeight;
     uniform mat4 gbufferProjectionInverse;
 #endif
 
@@ -33,10 +34,15 @@ varying float sky_luma_correction;
 varying vec3 cursed_sky;
 varying float current_wetness;
 
+/* Utilitary functions */
+
+#define FRAGMENT
+#include "/lib/downscale.glsl"
+
 // MAIN FUNCTION ------------------
 
 void main() {
-    
+    if(fragment_cull()) discard;
     #if defined THE_END
         vec4 block_color;
 
@@ -66,7 +72,7 @@ void main() {
             #endif
 
             #if COLOR_SCHEME == 11 && defined SIMPLE_AUTOEXP
-                block_color.rgb = pow(block_color.rgb, vec3(ASTRO_POWER * day_blend_float(1.0, 1.0, 0.8)));
+                block_color.rgb = pow(block_color.rgb, vec3(ASTRO_POWER * day_blend_float(1.0, 1.0, 0.6)));
             #else
                 block_color.rgb = pow(block_color.rgb, vec3(ASTRO_POWER));
             #endif

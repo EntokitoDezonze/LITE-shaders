@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.7.3 - dither.glsl
+/* MakeUp - LITE shaders 4.8 - dither.glsl
 Dither and hash functions
 
 There are a multitude of dithers in MakeUp, with different variants.

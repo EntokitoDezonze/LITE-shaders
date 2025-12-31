@@ -14,8 +14,11 @@
 /* Uniforms */
 
 uniform sampler2D colortex1;
+uniform float viewWidth;
+uniform float viewHeight;
+uniform int frameCounter;
 
-#if AA_TYPE > 0 || defined MOTION_BLUR
+#if AA_TYPE > 0
     uniform sampler2D colortex3;  // TAA past averages
     uniform float pixel_size_x;
     uniform float pixel_size_y;
@@ -36,14 +39,12 @@ varying vec2 texcoord;
 
 /* Utility functions */
 
-#if AA_TYPE > 0 || defined MOTION_BLUR
+#if AA_TYPE > 0
     #include "/lib/projection_utils.glsl"
 #endif
 
-#ifdef MOTION_BLUR
-    #include "/lib/dither.glsl"
-    #include "/lib/motion_blur.glsl"
-#endif
+#define FRAGMENT
+#include "/lib/downscale.glsl"
 
 #if AA_TYPE > 0
     #include "/lib/luma.glsl"
@@ -54,10 +55,11 @@ varying vec2 texcoord;
 // MAIN FUNCTION ------------------
 
 void main() {
+    if (fragment_cull()) discard;
     vec4 block_color = texture2DLod(colortex1, texcoord, 0);
 
     // Precalc past position and velocity
-    #if AA_TYPE > 0 || defined MOTION_BLUR
+    #if AA_TYPE > 0
         // Retrojection of previous frame
         float z_depth = texture2DLod(depthtex1, texcoord, 0).r;
         vec2 texcoord_past;
@@ -85,17 +87,15 @@ void main() {
 
     #endif
 
-    #ifdef MOTION_BLUR
-        // "Speed"
-        vec2 velocity = texcoord - texcoord_past;
-        block_color.rgb = motion_blur(block_color.rgb, z_depth, velocity, colortex1);
-    #endif
-
     #if AA_TYPE > 0
         #ifdef DOF
             block_color = fast_taa_depth(block_color, texcoord_past);
         #else
-            block_color.rgb = fast_taa(block_color.rgb, texcoord_past);
+            #if AA_TYPE == 3
+                block_color.rgb = fast_taa(block_color.rgb);
+            #else
+                block_color.rgb = fast_taa(block_color.rgb, texcoord_past);
+            #endif
         #endif
 
         block_color = clamp(block_color, vec4(0.0), vec4(vec3(50.0), 1.0));

@@ -43,6 +43,10 @@ uniform int dhRenderDistance;
 uniform vec4 lightningBoltPosition;
 uniform float frameTime;
 
+#if SUN_REFLECTION == 2
+    uniform mat4 gbufferModelViewInverse;
+#endif
+
 #if V_CLOUDS > 0
     uniform sampler2D gaux2;
 #endif
@@ -100,7 +104,11 @@ vec3 nfragpos = normalize(fragpos.xyz);
 #include "/lib/luma.glsl"
 #include "/src/current_sky_color.glsl"
 
+#define FRAGMENT
+#include "/lib/downscale.glsl"
+
 void main() {
+    if(fragment_cull()) discard;
     vec2 eye_bright_smooth = vec2(eyeBrightnessSmooth);
     vec3 real_light;
 
