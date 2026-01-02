@@ -18,7 +18,7 @@ profile.comment=Os perfis “Sem sombras” são feitos para máquinas de baixo 
 #############################
 option.ACERCADE=§lLITE shaders
 option.ACERCADE.comment=Obrigado por utilizar este shader! :). Defina os controles de qualidade nativos do Iris ou OptiFine nos valores normais ou predefinidos para obter uma melhor qualidade. Tradução para Português e modificação por: @Entokito Dezonze
-value.ACERCADE.0=§5§l§oLT48
+value.ACERCADE.0=§5§l§oLT49
 
 #Style
 option.STYLE=§lEstilo
@@ -224,13 +224,13 @@ value.SSR_TYPE.0=Flipped image
 value.SSR_TYPE.1=§a§lRaymarching§r
 
 option.SUN_REFLECTION=§b▶§r Reflexo do sol/lua
-option.SUN_REFLECTION.comment=Faz o sol e a luz refletirem luz no vidro e na água.
+option.SUN_REFLECTION.comment=Faz o sol e a lua refletirem luz no vidro e na água.
 value.SUN_REFLECTION.0=Off
 value.SUN_REFLECTION.1=Circular
 value.SUN_REFLECTION.2=Quadrado
 
 option.CLOUD_REFLECTION=§b▶§r Reflex. das nuvens vol.
-option.CLOUD_REFLECTION.comment=Faz as nuvens volumétricas criarem reflexos
+option.CLOUD_REFLECTION.comment=Faz as nuvens volumétricas criarem reflexos na água e vidro.
 
 option.WAVING=§9▶§r Movimento em plantas
 option.WAVING.comment=Faz blocos com grama e folhas se moverem com o vento
@@ -368,7 +368,7 @@ value.CIRRUS_STEPS_AVG.10=§c▶§r §5§l§oMAX
 
 option.SIMPLE_SKY=§b▶§r Tipo do céu
 option.SIMPLE_SKY.comment=Apenas use esta opção com o esquema §b§lRealístico+§r, e se quiser o céu antigo do LITE, ou para melhorar ~5% da performance.
-value.SIMPLE_SKY.0=§5§lLITE 4.8
+value.SIMPLE_SKY.0=§5§lLITE 4.9
 value.SIMPLE_SKY.1=LITE 4.1
 
 
@@ -497,7 +497,7 @@ option.HOVER.comment=Olá! Aqui você pode ter algumas informações de LITE sha
 value.HOVER.0=
 
 option.VERSION=Info. da versão
-option.VERSION.comment=Nome: §lLITE §rshaders §5§l4.8§r. Build: RELEASE. Código: §5§l§oLT48§r. Data da versão: 30 de Dezembro de 2025. Baseado no MakeUp Ultrafast 9.3e
+option.VERSION.comment=Nome: §lLITE §rshaders §5§l4.9§r. Build: RELEASE. Código: §5§l§oLT49§r. Data da versão: 1º de Janeiro de 2026. Baseado no MakeUp Ultrafast 9.3e
 value.VERSION.0=
 
 option.PROFILES=Perfis Gráficos

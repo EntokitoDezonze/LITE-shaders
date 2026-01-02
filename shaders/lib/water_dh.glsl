@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - water_dh.glsl
+/* MakeUp - LITE shaders 4.9 - water_dh.glsl
 Water reflection and refraction related functions (dh).
 */
 

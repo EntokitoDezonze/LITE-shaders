@@ -15,7 +15,7 @@ profile.comment=De "skugglösa" profilerna är designade för datorer med låg p
 #############################
 option.ACERCADE=LITE shaders
 option.ACERCADE.comment=Tack för att du använder denna shader! :). Ändra Optifines inbyggda kvalitetsalternativ till normala värden eller dess standardvärden för bättre kvalitet.
-value.ACERCADE.0=§5§l§oLT48
+value.ACERCADE.0=§5§l§oLT49
 
 
 #Options

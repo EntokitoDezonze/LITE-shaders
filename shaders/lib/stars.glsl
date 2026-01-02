@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.8 - stars.glsl
+LITE shaders 4.9 - stars.glsl
 Stars render fixed in world space. - Renderização de estrelas fixas no espaço do mundo. 
 
 Based on https://www.shadertoy.com/view/Md2SR3

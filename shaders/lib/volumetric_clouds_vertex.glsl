@@ -48,14 +48,14 @@ vec3 antiRed = day_blend(vec3(1.0), vec3(0.0, 1.5, 1.0), vec3(1.0)); // Avoid re
             LIGHT_DAY_COLOR * 0.9,
             saturate(LIGHT_NIGHT_COLOR, 0.5) * 1.5
         ),
-        ZENITH_SKY_RAIN_COLOR * saturate(dark_cloud_color, 0.2) * day_blend_float(1.0, 0.85, 1.5),
+        ZENITH_SKY_RAIN_COLOR * saturate(dark_cloud_color, 0.2) * day_blend_float(1.0, 0.5, 3.0),
         rainStrength
     );
 #endif
 
 dark_cloud_color = mix(
     dark_cloud_color,
-    ZENITH_SKY_RAIN_COLOR * color_average(dark_cloud_color * day_blend_float(1.1, 1.0, 1.25)),
+    ZENITH_SKY_RAIN_COLOR * color_average(dark_cloud_color * day_blend_float(1.1, 0.5, 1.25)),
     rainStrength
 );
 

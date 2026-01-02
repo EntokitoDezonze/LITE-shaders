@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.8 - get_sky.glsl
+LITE shaders 4.9 - get_sky.glsl
 Sky render. - Renderização do céu. 
 */
 

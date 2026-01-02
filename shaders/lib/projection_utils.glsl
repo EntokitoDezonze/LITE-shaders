@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - projection_utils.glsl
+/* MakeUp - LITE shaders 4.9 - projection_utils.glsl
 Projection generic functions.
 
 Javier Garduño - GNU Lesser General Public License v3.0

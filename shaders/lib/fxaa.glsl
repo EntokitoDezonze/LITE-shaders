@@ -1,4 +1,4 @@
-/* MakeUp Ultra Fast - LITE shaders 4.8 - fxaa.glsl
+/* MakeUp Ultra Fast - LITE shaders 4.9 - fxaa.glsl
 FXAA 3.11 from Simon Rodriguez
 http://blog.simonrodriguez.fr/articles/30-07-2016_implementing_fxaa.html
 

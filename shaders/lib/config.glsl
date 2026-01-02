@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - config.glsl
+/* MakeUp - LITE shaders 4.9 - config.glsl
 Config variables (DO NOT DELETE ANY #define)
 
 Javier Garduño - GNU Lesser General Public License v3.0
@@ -233,7 +233,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
   #define PIXEL_SIZE ((viewHeight + viewWidth) / 750) // <- ALWAYS WILL HAVE PRORPOTIONAL PIXEL SIZE
 #endif
 
-// Information Utils LITE shaders LT48
+// Information Utils LITE shaders LT49
 #define HOVER 0 // [0]
 #define VERSION 0 // [0]
 #define PROFILES 0 // [0]

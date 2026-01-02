@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.8 - Oscilator_utils.glsl #include "/lib/oscilator_utils.glsl"
+LITE shaders 4.9 - Oscilator_utils.glsl #include "/lib/oscilator_utils.glsl"
 Oscilation Synced with daytime (ticks) - Oscilação vinculada ao tempo mundial (ticks) */
 
 uniform float hour_world;

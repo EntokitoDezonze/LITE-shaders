@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.8 - end_portal.glsl #include "/lib/end_portal.glsl"
+LITE shaders 4.9 - end_portal.glsl #include "/lib/end_portal.glsl"
 End portal render. - Renderização do portal do End. */
 
 #include "/lib/render_aux.glsl"

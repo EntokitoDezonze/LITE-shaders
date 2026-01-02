@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.8 - composite3_fragment.glsl
+LITE shaders 4.9 - composite3_fragment.glsl
 AMD FSR EASU. */ 
 
 #include "/lib/config.glsl"

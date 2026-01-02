@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - volumetric_clouds.glsl
+/* MakeUp - LITE shaders 4.9 - volumetric_clouds.glsl
 Fast volumetric clouds - MakeUp & LITE shaders implementation
 */
 
@@ -78,7 +78,7 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
             float sample_fix = 0.0;
         #else
             increment = (intersection_pos_sup - intersection_pos) / 8;
-            float sample_fix = 10.0;
+            float sample_fix = 7.0;
         #endif
         increment_dist = length(increment);
 

@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.8 - post_processing.glsl #include "/lib/post_processing.glsl"
+LITE shaders 4.9 - post_processing.glsl #include "/lib/post_processing.glsl"
 Utilities, effects and fake effects. - Utilidades, efeitos e efeitos falsos. */
 
 

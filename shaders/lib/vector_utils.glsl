@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - vector_utils.glsl
+/* MakeUp - LITE shaders 4.9 - vector_utils.glsl
 Moving vector utils.
 
 Javier Garduño - GNU Lesser General Public License v3.0

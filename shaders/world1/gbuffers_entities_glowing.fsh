@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.8 - gbuffers_entities_glowing.fsh
+/* MakeUp - LITE shaders 4.9 - gbuffers_entities_glowing.fsh
 Render: Droped objects, mobs and things like that... glowing
 
 Javier Garduño - GNU Lesser General Public License v3.0

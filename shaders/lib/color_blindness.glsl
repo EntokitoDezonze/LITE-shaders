@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - color_blindness.glsl
+/* MakeUp - LITE shaders 4.9 - color_blindness.glsl
 The correction algorithm is taken from http://www.daltonize.org/search/label/Daltonize
 
 Javier Garduño - GNU Lesser General Public License v3.0

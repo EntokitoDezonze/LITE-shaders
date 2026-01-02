@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - water.glsl
+/* MakeUp - LITE shaders 4.9 - water.glsl
 Water reflection and refraction related functions.
 */
 
@@ -356,7 +356,7 @@ vec4 cristal_shader(
     color.rgb = mix(color.rgb, sky_reflection, fresnel);
     color.rgb = mix(color.rgb, reflection.rgb, fresnel);
 
-    color.a = mix(color.a, 1.0, fresnel * .9);
+    color.a = mix(color.a, 1.0, fresnel);
 
     #if SUN_REFLECTION > 0
         #ifndef NETHER

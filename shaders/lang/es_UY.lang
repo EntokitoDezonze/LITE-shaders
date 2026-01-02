@@ -18,7 +18,7 @@ profile.comment=Los perfiles "§lSin sombras§r" están diseñados para máquina
 #############################
 option.ACERCADE=§lLITE shaders
 option.ACERCADE.comment=¡Gracias por usar este shader! :). Configura los controles de calidad nativos de Iris u OptiFine a sus valores normales o predeterminados para obtener una mejor calidad. Traducido al idioma Español por @ediortiz, Revisado por: EntokitoDezonze
-value.ACERCADE.0=§5§l§oLT48
+value.ACERCADE.0=§5§l§oLT49
 
 #Estilo
 option.STYLE=§lEstilo
@@ -368,7 +368,7 @@ value.CIRRUS_STEPS_AVG.10=§c▶§r §5§l§oMAX
 
 option.SIMPLE_SKY=§b▶§r Tipo de cielo
 option.SIMPLE_SKY.comment=Utilice esta opción únicamente con el esquema. §b§lRealista+§r, y si quieres el cielo antiguo de §5§lLITE§r, o mejorar el rendimiento en aproximadamente un 5%
-value.SIMPLE_SKY.0=§5§lLITE 4.8
+value.SIMPLE_SKY.0=§5§lLITE 4.9
 value.SIMPLE_SKY.1=LITE 4.1
 
 
@@ -497,7 +497,7 @@ option.HOVER.comment=¡Hola! Aquí encontrarás información sobre LITE shaders
 value.HOVER.0=
 
 option.VERSION=Info. de versión
-option.VERSION.comment=Nome: §lLITE §rshaders §5§l4.8§r. Build: RELEASE. Código: §5§l§oLT48§r. Fecha de la versión: 30 de Diciembre de 2025. Basado en MakeUp Ultrafast 9.3e
+option.VERSION.comment=Nome: §lLITE §rshaders §5§l4.9§r. Build: RELEASE. Código: §5§l§oLT49§r. Fecha de la versión: 1 de Enero de 2026. Basado en MakeUp Ultrafast 9.3e
 value.VERSION.0=
 
 option.PROFILES=Perfiles gráficos

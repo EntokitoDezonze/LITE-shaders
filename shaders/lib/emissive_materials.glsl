@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.8 - emissive_materials.glsl #include "/lib/emissive_materials.glsl"
+LITE shaders 4.9 - emissive_materials.glsl #include "/lib/emissive_materials.glsl"
 Emissive properties for ores, some materials, particles and entities. - Propriedades emissivas para minérios, alguns materiais, partículas e entidades. */
 
 vec3 emmisive_color = vec3(1.0);

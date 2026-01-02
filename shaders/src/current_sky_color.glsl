@@ -3,7 +3,7 @@
  / /___/ /  / / / _/  
 /____/___/ /_/ /___/  
                       
-LITE shaders 4.8 - current_sky_color.glsl #include "/src/current_sky_color.glsl"
+LITE shaders 4.9 - current_sky_color.glsl #include "/src/current_sky_color.glsl"
 Sky color calculation. - Cálculo da cor do céu. */
 
 bool check = (lightningBoltPosition.w > 0.001);

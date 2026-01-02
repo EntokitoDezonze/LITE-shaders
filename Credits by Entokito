@@ -2,11 +2,11 @@
   / /  /  _/_  __/ __/                       
  / /___/ /  / / / _/                         
 /____/___/ /_/ /_____              ____  ___ 
-  ___ / / ___ ____/ ___ _______   / / / ( _ )
- (_-</ _ / _ `/ _  / -_/ __(_-<  /_  __/ _  |
-/___/_//_\_,_/\_,_/\__/_/ /___/   /_/(_\___/ 
+  ___ / / ___ ____/ ___ _______   / / / / _ \
+ (_-</ _ / _ `/ _  / -_/ __(_-<  /_  __ \_, /
+/___/_//_\_,_/\_,_/\__/_/ /___/   /_/(_/___/  
                                                                                         
-# LITE shaders version 4.8
+# LITE shaders version 4.9
 
 Original creator: Javier Garduño
 Links:
@@ -18,38 +18,20 @@ Modfied and translated by @EntokitoDezonze
 
 Changelog:
 
-- Thanks to tasxatzial and ediortiz for beta testing this version.
-
 # OVERVIEW:
-- This version adds Upscale by FSR, as well as fixing bugs and tweaking some features.
-
-# New Feature! - AMD FSR
-- Adjusts the resolution that the shader is rendered.
-- Reducing quality can greatly improve performance, especially in 4K.
-- A low-resolution image is reconstructed with FSR 1.0.
-- Artifacts and jagged edges are expected.
-
-# New language! - Spanish
-- Translated by ediortiz. Thanks!
-- Translation is available in Latin American and European Spanish.
+- This version makes minor adjustments to the shader.
 
 # General changes:
-- Image quality is improved when using Smart TAA.
-- Sun/moon reflections are now square, and the circular style is optional. To adjust it, go to Basic -> Sun Reflection.
-- The "PS1-Like" option now literally renders on lower resolution, improving performance.
-- Small color changes on Vanilla clouds and the End portal.
-- Sea pickles does not wave anymore.
-- Small color changes on Vanilla clouds and the End portal.
-- Sea pickles does not wave anymore.
-- Blocky clouds now has better quality by default (very low performance impact).
+- Vanilla water has now smoother texture.
+- Bit reduced samples on Blocky clouds, improving performance (no visual impact.)
+- Slighyly adjusted clouds colors on rain.
 
 # Bugfixes:
-- Fixed compilation failure when using Distant Horizons (again.)
-- Fixed the pinkish aspect on white, gray, and black glass.
-- Fixed emerald ore with some dark pixels when Glowing ores was enabled.
-- Fixed FULLBRIGHT mode not working.
+- Fixed ghosting on Smart TAA.
+- Fixed excessive fog on Distant Horizons + Snowy biome with "Biome fog" enabled.
+- Fixed some typos on potuguese language.
 
-Version code: LT48
+Version code: LT49
 
 Based in MakeUp Ultrafast 9.3h
 

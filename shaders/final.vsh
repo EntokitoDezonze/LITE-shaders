@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.8 - final.fsh
+/* MakeUp - LITE shaders 4.9 - final.fsh
 Render: Final renderer
 
 Javier Garduño - GNU Lesser General Public License v3.0

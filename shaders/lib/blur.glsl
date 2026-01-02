@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - blur.glsl
+/* MakeUp - LITE shaders 4.9 - blur.glsl
 Blur functions.
 
 Javier Garduño - GNU Lesser General Public License v3.0

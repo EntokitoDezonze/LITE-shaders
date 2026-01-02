@@ -1,4 +1,4 @@
-// LITE shaders 4.8 - Prepare_fragment.glsl
+// LITE shaders 4.9 - Prepare_fragment.glsl
 // Sky colors.
 
 #include "/lib/config.glsl"

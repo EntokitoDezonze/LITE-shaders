@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.8 - gbuffers_line.vsh
+/* MakeUp - LITE shaders 4.9 - gbuffers_line.vsh
 Render: Render lines
 
 Javier Garduño - GNU Lesser General Public License v3.0

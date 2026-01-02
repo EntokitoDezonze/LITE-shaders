@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - aberration.glsl
+/* MakeUp - LITE shaders 4.9 - aberration.glsl
 Color aberration effect.
 */
 

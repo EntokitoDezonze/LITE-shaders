@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - ao.glsl
+/* MakeUp - LITE shaders 4.9 - ao.glsl
 Based on old Capt Tatsu's ambient occlusion functions.
 
 */

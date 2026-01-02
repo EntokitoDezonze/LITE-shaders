@@ -17,13 +17,13 @@ profile.comment=The "Shadowless" profiles are designed for low-performance machi
 #############################
 option.ACERCADE=§lLITE shaders
 option.ACERCADE.comment=Thanks for using this shader! :). Set Iris or OptiFine native quality controls on normal or default values for better quality. Modified by: @Entokito Dezonze, revision on this language by tasxatzial
-value.ACERCADE.1=§f§lLT48
-value.ACERCADE.2=§9§lLT48
-value.ACERCADE.3=§b§lLT48
-value.ACERCADE.4=§a§lLT48
-value.ACERCADE.5=§e§lLT48
-value.ACERCADE.6=§4§lLT48
-value.ACERCADE.7=§5§l§oLT48
+value.ACERCADE.1=§f§lLT49
+value.ACERCADE.2=§9§lLT49
+value.ACERCADE.3=§b§lLT49
+value.ACERCADE.4=§a§lLT49
+value.ACERCADE.5=§e§lLT49
+value.ACERCADE.6=§4§lLT49
+value.ACERCADE.7=§5§l§oLT49
 
 #Style
 option.STYLE=§lStyle
@@ -251,7 +251,7 @@ value.SUN_REFLECTION.1=Circular
 value.SUN_REFLECTION.2=Square
 
 option.CLOUD_REFLECTION=§b▶§r Vol. clouds reflection
-option.CLOUD_REFLECTION.comment=Makes volumetric clouds create reflections
+option.CLOUD_REFLECTION.comment=Makes volumetric clouds create reflections on water.
 
 option.WAVING=§9▶§r Waving plants
 option.WAVING.comment=Makes objects like leaves or grass move in the wind
@@ -400,7 +400,7 @@ value.CIRRUS_STEPS_AVG.10=§c▶§r §5§l§oMAX
 
 option.SIMPLE_SKY=§b▶§r §rSky type
 option.SIMPLE_SKY.comment=Only use this option with §b§lRealistic+ §rcolor scheme, if you want the old sky of LITE, or to improve performance by ~5%.
-value.SIMPLE_SKY.0=§5§lLITE 4.8
+value.SIMPLE_SKY.0=§5§lLITE 4.9
 value.SIMPLE_SKY.1=LITE 4.1
 
 option.BLOOM=§b▶§r Bloom
@@ -535,7 +535,7 @@ option.HOVER.comment=Hi! Here you can see some information about LITE shaders!
 value.HOVER.0=
 
 option.VERSION=Version info
-option.VERSION.comment=Name: §lLITE §rshaders §5§l4.8§r. Build: RELEASE. Code: §5§l§oLT48§r. Version date: December, 30th, 2025. Based in MakeUp Ultrafast 9.3e
+option.VERSION.comment=Name: §lLITE §rshaders §5§l4.9§r. Build: RELEASE. Code: §5§l§oLT49§r. Version date: January, 1st, 2026. Based in MakeUp Ultrafast 9.3e
 value.VERSION.0=
 
 option.PROFILES=Graphic profiles

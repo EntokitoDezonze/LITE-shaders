@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - volumetric_clouds_end.glsl
+/* MakeUp - LITE shaders 4.9 - volumetric_clouds_end.glsl
 Fast volumetric clouds (for The End) - MakeUp implementation
 */
 

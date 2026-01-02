@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - depth_dh.glsl
+/* MakeUp - LITE shaders 4.9 - depth_dh.glsl
 Depth utilities.
 
 Javier Garduño - GNU Lesser General Public License v3.0

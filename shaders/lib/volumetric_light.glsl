@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - volumetric_clouds.glsl
+/* MakeUp - LITE shaders 4.9 - volumetric_clouds.glsl
 Volumetric light - MakeUp implementation
 */
 

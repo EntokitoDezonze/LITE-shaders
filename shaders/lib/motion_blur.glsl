@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - motion_blur.glsl
+/* MakeUp - LITE shaders 4.9 - motion_blur.glsl
 Motion blur functions.
 
 Javier Garduño - GNU Lesser General Public License v3.0

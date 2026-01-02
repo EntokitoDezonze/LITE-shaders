@@ -91,11 +91,7 @@ void main() {
         #ifdef DOF
             block_color = fast_taa_depth(block_color, texcoord_past);
         #else
-            #if AA_TYPE == 3
-                block_color.rgb = fast_taa(block_color.rgb);
-            #else
-                block_color.rgb = fast_taa(block_color.rgb, texcoord_past);
-            #endif
+            block_color.rgb = fast_taa(block_color.rgb, texcoord_past);
         #endif
 
         block_color = clamp(block_color, vec4(0.0), vec4(vec3(50.0), 1.0));

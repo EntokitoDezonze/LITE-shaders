@@ -3,7 +3,7 @@
  / /___/ /  / / / _/
 /____/___/ /_/ /___/
 
-LITE shaders 4.8 - fsr_easu.glsl #include "/lib/fsr_easu.glsl"
+LITE shaders 4.9 - fsr_easu.glsl #include "/lib/fsr_easu.glsl"
 FSR EASU. */
 
 /*

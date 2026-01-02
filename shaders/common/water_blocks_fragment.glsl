@@ -239,7 +239,6 @@ void main() {
             #if WATER_TEXTURE == 1
                 water_texture += 0.25;
                 water_texture *= water_texture;
-                water_texture *= water_texture;
                 fresnel = clamp(fresnel * (water_texture), 0.0, 1.0);
             #endif
 

@@ -1,4 +1,5 @@
 # LITE shaders (MakeUp edit)
+# Version: 4.9
 
 This is a [MakeUp - Ultra Fast](https://modrinth.com/shader/makeup-ultra-fast-shaders) shaders modification that aims to make this amazing shader even faster! This shader maintains good looks while having great performance. Adding so many customization and a Portuguese translation. It can be used both by people with potato PCs that want to enhance Minecraft Java visuals and by people with good PCs who want high frame rates with good graphics and sharp shadows.
 
@@ -14,6 +15,7 @@ Majority of these features can be turned off or reduced to enhance performance.
 
 - Shadow casting
 - Style button for fast switching of Realistic looks and Vanilla.
+- AMD FSR 1.0
 - Colored shadows
 - Godrays
 - Adaptative contrast TAA (Temporal anti-aliasing)

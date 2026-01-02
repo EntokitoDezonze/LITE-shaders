@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - color_utils.glsl
+/* MakeUp - LITE shaders 4.9 - color_utils.glsl
 Usefull data for color manipulation.
 
 Javier Garduño - GNU Lesser General Public License v3.0

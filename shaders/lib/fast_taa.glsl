@@ -1,4 +1,4 @@
-/* MakeUp - LITE shaders 4.8 - fast_taa.glsl
+/* MakeUp - LITE shaders 4.9 - fast_taa.glsl
 Temporal antialiasing functions.
 
 Javier Garduño - GNU Lesser General Public License v3.0
@@ -7,9 +7,14 @@ Javier Garduño - GNU Lesser General Public License v3.0
 /* ---------------*/
 
 #if AA_TYPE == 3
-    vec3 fast_taa(vec3 block_color) {
+    vec3 fast_taa(vec3 block_color, vec2 texcoord_past) {
         vec3 current = block_color;
-        vec3 previous = texture2DLod(colortex3, texcoord, 0.0).rgb;
+
+        #ifndef FSR
+            vec3 previous = texture2DLod(colortex3, texcoord_past, 0.0).rgb;
+        #else
+            vec3 previous = texture2DLod(colortex3, texcoord, 0.0).rgb;
+        #endif
 
         vec2 px = vec2(pixel_size_x, pixel_size_y);
 

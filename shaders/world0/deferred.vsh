@@ -1,5 +1,5 @@
 #version 120
-/* MakeUp - LITE shaders 4.8 - deferred.vsh
+/* MakeUp - LITE shaders 4.9 - deferred.vsh
 Render: Ambient occlusion, volumetric clouds
 
 Javier Garduño - GNU Lesser General Public License v3.0
