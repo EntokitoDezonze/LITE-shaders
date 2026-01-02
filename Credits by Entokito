@@ -22,14 +22,14 @@ Changelog:
 - This version makes minor adjustments to the shader.
 
 # General changes:
-- Vanilla water has now smoother texture.
+- Vanilla water has now a smoother texture.
 - Bit reduced samples on Blocky clouds, improving performance (no visual impact.)
-- Slighyly adjusted clouds colors on rain.
+- Slightly adjusted cloud colors on rain.
 
 # Bugfixes:
 - Fixed ghosting on Smart TAA.
 - Fixed excessive fog on Distant Horizons + Snowy biome with "Biome fog" enabled.
-- Fixed some typos on potuguese language.
+- Fixed some typos in Portuguese language.
 
 Version code: LT49
 
